@@ -1,6 +1,0 @@
-# Pretty URL for lookbook
-/lookbook    /lookbook.html    200
-/thank-you   /thank-you.html   200
-
-# 404 fallback
-/*           /index.html       404
