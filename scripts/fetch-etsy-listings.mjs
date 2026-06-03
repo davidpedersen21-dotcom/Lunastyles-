@@ -19,7 +19,7 @@ function normalizePrice(price) {
   return '';
 }
 
-const shopData = await etsyFetch(`https://openapi.etsy.com/v3/application/shops?shop_name=${encodeURIComponent(SHOP_NAME)}`);
+const shopData = await etsyFetch(`https://api.etsy.com/v3/application/shops?shop_name=${encodeURIComponent(SHOP_NAME)}`);
 const shop = shopData.results?.[0];
 if (!shop?.shop_id) throw new Error(`Shop not found: ${SHOP_NAME}`);
 
@@ -29,7 +29,7 @@ const listings = [];
 let total = Infinity;
 
 while (offset < total) {
-  const data = await etsyFetch(`https://openapi.etsy.com/v3/application/shops/${shop.shop_id}/listings/active?limit=${limit}&offset=${offset}&includes[]=Images`);
+  const data = await etsyFetch(`https://api.etsy.com/v3/application/shops/${shop.shop_id}/listings/active?limit=${limit}&offset=${offset}&includes[]=Images`);
   total = data.count ?? 0;
   for (const l of data.results || []) {
     listings.push({
