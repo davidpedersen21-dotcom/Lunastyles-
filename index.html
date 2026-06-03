@@ -404,7 +404,7 @@ footer a:hover{opacity:1}
     <div class="ig-grid">
       <div class="reel-card reveal-scale">
         <video autoplay loop muted playsinline>
-          <source src="https://raw.githubusercontent.com/davidpedersen21-dotcom/Lunastyles-/main/reel.mp4" type="video/mp4">
+          <source src="reel.mp4" type="video/mp4">
         </video>
         <div class="reel-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Reel</div>
       </div>
@@ -609,15 +609,28 @@ function updateCountdown(){
 updateCountdown();setInterval(updateCountdown,1000);
 
 let allListings=[],currentFilter='all',offset=0;
-const ETSY_KEY='9std55k55yf2n0crvrq8qslm',SHOP_NAME='LunaStyles2026Shop',CORS='https://corsproxy.io/?';
+const ETSY_KEY='9std55k55yf2n0crvrq8qslm',SHOP_NAME='LunaStyles2026Shop',CORS_PROXIES=[
+  url=>'https://api.allorigins.win/raw?url='+encodeURIComponent(url),
+  url=>'https://corsproxy.io/?'+encodeURIComponent(url),
+  url=>'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(url),
+];
+async function tryFetch(url){
+  for(const proxy of CORS_PROXIES){
+    try{
+      const r=await fetch(proxy(url),{headers:{'x-api-key':ETSY_KEY},signal:AbortSignal.timeout(8000)});
+      if(r.ok)return r;
+    }catch(e){continue;}
+  }
+  throw new Error('all proxies failed');
+}
 async function fetchListings(reset=false){
   if(reset){offset=0;allListings=[];}
   try{
-    const sr=await fetch(CORS+encodeURIComponent(`https://openapi.etsy.com/v3/application/shops?shop_name=${SHOP_NAME}`),{headers:{'x-api-key':ETSY_KEY}});
+    const sr=await tryFetch(`https://openapi.etsy.com/v3/application/shops?shop_name=${SHOP_NAME}`);
     if(!sr.ok)throw new Error('shop');
     const sd=await sr.json(),shopId=sd.results?.[0]?.shop_id;
     if(!shopId)throw new Error('not found');
-    const lr=await fetch(CORS+encodeURIComponent(`https://openapi.etsy.com/v3/application/shops/${shopId}/listings/active?limit=24&offset=${offset}&includes[]=Images`),{headers:{'x-api-key':ETSY_KEY}});
+    const lr=await tryFetch(`https://openapi.etsy.com/v3/application/shops/${shopId}/listings/active?limit=24&offset=${offset}&includes[]=Images`);
     if(!lr.ok)throw new Error('listings');
     const data=await lr.json();
     const listings=(data.results||[]).map(l=>({listing_id:l.listing_id,title:l.title,url:l.url,price:l.price,images:(l.images||[]).map(i=>({url_570xN:i.url_570xN,url_fullxfull:i.url_fullxfull}))})  );
