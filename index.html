@@ -513,9 +513,7 @@ footer a:hover{opacity:1}
         <div class="contact-form">
           <p class="section-tag rust">Get in Touch</p>
           <h2 class="section-title" style="font-size:1.6rem;margin-bottom:20px">Send a Message</h2>
-          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
-            <input type="hidden" name="form-name" value="contact">
-            <p style="display:none"><input name="bot-field"></p>
+          <form name="contact" id="contactForm">
             <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="Your name…" required></div>
             <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="you@example.com" required></div>
             <div class="form-group"><label>What's this about?</label>
@@ -614,53 +612,215 @@ function updateCountdown(){
 }
 updateCountdown();setInterval(updateCountdown,1000);
 
-let allListings=[],currentFilter='all',offset=0;
-const ETSY_KEY='9std55k55yf2n0crvrq8qslm',SHOP_NAME='LunaStyles2026Shop',async function tryFetch(url){
-  // allorigins wraps response in JSON: {contents: "..."}
-  const proxyUrl='https://api.allorigins.win/get?url='+encodeURIComponent(url)+'&callback=?';
-  // Use plain fetch with allorigins /get endpoint  
-  const r=await fetch('https://api.allorigins.win/get?url='+encodeURIComponent(url),{signal:AbortSignal.timeout(12000)});
-  if(!r.ok) throw new Error('proxy failed');
-  const wrapper=await r.json();
-  // allorigins returns {contents: stringified response}
-  return {
-    ok:true,
-    json:async()=>JSON.parse(wrapper.contents)
-  };
-}
+
+
+let allListings=[],currentFilter='all',visibleCount=24;
+const ETSY_SHOP_NAME='LunaStyles2026Shop';
+const ETSY_SHOP_URL='https://www.etsy.com/shop/LunaStyles2026Shop';
+const LISTINGS_JSON_URLS=['data/listings.json','listings.json'];
+
+// GitHub Pages cannot run a private backend. The normal path is:
+// 1. GitHub Action calls the Etsy API.
+// 2. GitHub Action writes data/listings.json.
+// 3. This page loads that JSON instantly.
+// A direct Etsy API fallback is included, but it only runs if an API key is intentionally added below.
+const ETSY_API_KEY='';
+
 async function fetchListings(reset=false){
-  if(reset){offset=0;allListings=[];}
+  if(reset){visibleCount=24;allListings=[];showLoadingCards();}
   try{
-    const sr=await tryFetch(`https://openapi.etsy.com/v3/application/shops?shop_name=${SHOP_NAME}`);
-    if(!sr.ok)throw new Error('shop');
-    const sd=await sr.json(),shopId=sd.results?.[0]?.shop_id;
-    if(!shopId)throw new Error('not found');
-    const lr=await tryFetch(`https://openapi.etsy.com/v3/application/shops/${shopId}/listings/active?limit=24&offset=${offset}&includes[]=Images`);
-    if(!lr.ok)throw new Error('listings');
-    const data=await lr.json();
-    const listings=(data.results||[]).map(l=>({listing_id:l.listing_id,title:l.title,url:l.url,price:l.price,images:(l.images||[]).map(i=>({url_570xN:i.url_570xN,url_fullxfull:i.url_fullxfull}))})  );
-    allListings=[...allListings,...listings];offset+=listings.length;renderListings();
-    document.getElementById('loadMoreWrap').style.display=(data.count>offset)?'block':'none';
+    const data=await loadListingsData();
+    allListings=normalizeListings(data.listings||[]);
+    renderListings();
+    updateLoadMore();
   }catch(err){
-    console.error('Etsy:',err);
-    document.getElementById('liveGrid').innerHTML=`<div class="listings-error"><p style="margin-bottom:14px">⚠️ Couldn't load listings right now</p><a href="https://www.etsy.com/shop/LunaStyles2026Shop" target="_blank" class="btn btn-primary" style="display:inline-flex;margin:0 auto">Browse on Etsy →</a></div>`;
+    console.error('Listings failed:',err);
+    showListingsError();
   }
 }
-function getCat(t){t=t.toLowerCase();if(t.includes('hat')||t.includes('bucket'))return'hat';if(t.includes('skirt'))return'skirt';if(t.includes('jacket')||t.includes('kimono')||t.includes('cardigan'))return'jacket';if(t.includes('pant')||t.includes('trouser')||t.includes('short'))return'pant';if(t.includes('bag')||t.includes('tote')||t.includes('pouch'))return'bag';if(t.includes('wrap')||t.includes('scarf')||t.includes('shawl')||t.includes('headwrap'))return'wrap';return'other';}
+
+async function loadListingsData(){
+  const errors=[];
+
+  for(const url of LISTINGS_JSON_URLS){
+    try{
+      const response=await fetch(url,{cache:'no-store'});
+      if(!response.ok)throw new Error(`${url}: ${response.status}`);
+      const data=await response.json();
+      if(Array.isArray(data.listings))return data;
+      throw new Error(`${url}: missing listings array`);
+    }catch(err){
+      errors.push(err.message||String(err));
+    }
+  }
+
+  if(ETSY_API_KEY.trim()){
+    try{return await fetchListingsFromEtsy();}
+    catch(err){errors.push(err.message||String(err));}
+  }
+
+  throw new Error(errors.join(' | '));
+}
+
+async function fetchListingsFromEtsy(){
+  const headers={'x-api-key':ETSY_API_KEY.trim()};
+  const shopLookup=`https://openapi.etsy.com/v3/application/shops?shop_name=${encodeURIComponent(ETSY_SHOP_NAME)}`;
+  const shopRes=await fetch(shopLookup,{headers});
+  if(!shopRes.ok)throw new Error(`Etsy shop lookup failed: ${shopRes.status}`);
+  const shopData=await shopRes.json();
+  const shop=shopData.results&&shopData.results[0];
+  if(!shop||!shop.shop_id)throw new Error(`Etsy shop not found: ${ETSY_SHOP_NAME}`);
+
+  const listings=[];
+  let offset=0,total=Infinity;
+  const limit=100;
+
+  while(offset<total){
+    const url=`https://openapi.etsy.com/v3/application/shops/${shop.shop_id}/listings/active?limit=${limit}&offset=${offset}&includes[]=Images`;
+    const res=await fetch(url,{headers});
+    if(!res.ok)throw new Error(`Etsy listings failed: ${res.status}`);
+    const data=await res.json();
+    total=Number.isFinite(data.count)?data.count:0;
+    const batch=Array.isArray(data.results)?data.results:[];
+    listings.push(...batch.map(normalizeEtsyListing));
+    if(!batch.length)break;
+    offset+=batch.length;
+  }
+
+  return{updated_at:new Date().toISOString(),source:'Etsy Open API browser fallback',shop_name:ETSY_SHOP_NAME,listings};
+}
+
+function normalizeEtsyListing(l){
+  const images=Array.isArray(l.images)?l.images:[];
+  return{
+    listing_id:l.listing_id||'',
+    title:l.title||'Luna Styles item',
+    url:l.url||ETSY_SHOP_URL,
+    price:normalizePriceObject(l.price),
+    image:images[0]?.url_570xN||images[0]?.url_fullxfull||'',
+    images:images.map(img=>({url_570xN:img.url_570xN||'',url_fullxfull:img.url_fullxfull||''})),
+    quantity:l.quantity,
+    tags:Array.isArray(l.tags)?l.tags:[]
+  };
+}
+
+function normalizeListings(items){
+  const seen=new Set();
+  return items
+    .filter(Boolean)
+    .map(item=>({
+      listing_id:item.listing_id||item.id||'',
+      title:item.title||'Luna Styles item',
+      url:item.url||ETSY_SHOP_URL,
+      price:item.price||'',
+      image:item.image||item.images?.[0]?.url_570xN||item.images?.[0]?.url_fullxfull||'',
+      images:Array.isArray(item.images)?item.images:[],
+      quantity:item.quantity,
+      tags:Array.isArray(item.tags)?item.tags:[]
+    }))
+    .filter(item=>{
+      const key=item.listing_id||item.url||item.title;
+      if(seen.has(key))return false;
+      seen.add(key);
+      return true;
+    });
+}
+
+function showLoadingCards(){
+  const grid=document.getElementById('liveGrid');
+  if(!grid)return;
+  grid.innerHTML=Array.from({length:8}).map(()=>`<div class="skel-card"><div class="skel-img"></div><div class="skel-body"><div class="skel-line w80"></div><div class="skel-line w50"></div></div></div>`).join('');
+}
+
+function showListingsError(){
+  const grid=document.getElementById('liveGrid');
+  if(!grid)return;
+  grid.innerHTML=`<div class="listings-error"><p style="margin-bottom:14px">Listings are updating right now.</p><a href="${ETSY_SHOP_URL}" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-flex;margin:0 auto">Browse on Etsy</a></div>`;
+  const wrap=document.getElementById('loadMoreWrap');
+  if(wrap)wrap.style.display='none';
+}
+
+function getCat(t){
+  t=(t||'').toLowerCase();
+  if(t.includes('hat')||t.includes('bucket'))return'hat';
+  if(t.includes('skirt'))return'skirt';
+  if(t.includes('jacket')||t.includes('kimono')||t.includes('cardigan'))return'jacket';
+  if(t.includes('pant')||t.includes('trouser')||t.includes('short'))return'pant';
+  if(t.includes('bag')||t.includes('tote')||t.includes('pouch'))return'bag';
+  if(t.includes('wrap')||t.includes('scarf')||t.includes('shawl')||t.includes('headwrap'))return'wrap';
+  return'other';
+}
+
+function normalizePriceObject(price){
+  if(!price)return'';
+  if(typeof price==='string')return price.startsWith('$')?price:'$'+price;
+  if(typeof price==='number')return '$'+price.toFixed(2);
+  if(price.amount&&price.divisor)return '$'+(Number(price.amount)/Number(price.divisor)).toFixed(2);
+  return'';
+}
+function formatPrice(price){return normalizePriceObject(price);}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function attr(s){return esc(s).replace(/`/g,'&#96;');}
+function openListing(url){window.open(url||ETSY_SHOP_URL,'_blank','noopener');}
+
 function renderListings(){
   const grid=document.getElementById('liveGrid');
-  const list=currentFilter==='all'?allListings:allListings.filter(l=>getCat(l.title)===currentFilter);
-  if(!list.length){grid.innerHTML=`<div class="listings-error">No items in this category. <a href="https://www.etsy.com/shop/LunaStyles2026Shop" target="_blank">Browse all on Etsy</a></div>`;return;}
+  if(!grid)return;
+  const filtered=currentFilter==='all'?allListings:allListings.filter(l=>getCat(l.title)===currentFilter);
+  const list=filtered.slice(0,visibleCount);
+  if(!list.length){
+    grid.innerHTML=`<div class="listings-error">No items in this category. <a href="${ETSY_SHOP_URL}" target="_blank" rel="noopener">Browse all on Etsy</a></div>`;
+    updateLoadMore(filtered.length);
+    return;
+  }
   grid.innerHTML=list.map(l=>{
-    const img=l.images?.[0]?.url_570xN||l.images?.[0]?.url_fullxfull||'',price=l.price?'$'+parseFloat(l.price.amount/l.price.divisor).toFixed(2):'',cat=getCat(l.title),url=l.url||'https://www.etsy.com/listing/'+l.listing_id;
-    return`<div class="product-card" onclick="window.open('${url}','_blank')"><div class="product-img">${img?`<img src="${img}" alt="${l.title.replace(/"/g,"'")}" loading="lazy">`:'<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.5rem">🌸</div>'}<div class="product-overlay"><button class="overlay-btn">Shop on Etsy →</button></div></div><div class="product-info">${cat!=='other'?`<span class="product-tag ${cat}">${cat}</span>`:''}<div class="product-title">${l.title}</div>${price?`<div class="product-price">${price}</div>`:''}</div></div>`;
+    const img=l.image||l.images?.[0]?.url_570xN||l.images?.[0]?.url_fullxfull||'';
+    const price=formatPrice(l.price),cat=getCat(l.title),url=l.url||ETSY_SHOP_URL;
+    return `<article class="product-card" role="link" tabindex="0" data-url="${attr(url)}">
+      <div class="product-img">
+        ${img?`<img src="${attr(img)}" alt="${attr(l.title)}" loading="lazy" referrerpolicy="no-referrer">`:'<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.5rem">🌸</div>'}
+        <div class="product-overlay"><button class="overlay-btn" type="button">Shop on Etsy</button></div>
+      </div>
+      <div class="product-info">
+        ${cat!=='other'?`<span class="product-tag ${cat}">${cat}</span>`:''}
+        <div class="product-title">${esc(l.title)}</div>
+        ${price?`<div class="product-price">${esc(price)}</div>`:''}
+      </div>
+    </article>`;
   }).join('');
+
+  grid.querySelectorAll('.product-card').forEach(card=>{
+    card.addEventListener('click',()=>openListing(card.dataset.url));
+    card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openListing(card.dataset.url);}});
+  });
+  updateLoadMore(filtered.length);
 }
-function loadMore(){fetchListings(false);}
-document.querySelectorAll('.filter-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentFilter=btn.dataset.filter;renderListings();});});
+
+function updateLoadMore(total){
+  const wrap=document.getElementById('loadMoreWrap');
+  if(!wrap)return;
+  const filteredTotal=typeof total==='number'?total:(currentFilter==='all'?allListings.length:allListings.filter(l=>getCat(l.title)===currentFilter).length);
+  wrap.style.display=filteredTotal>visibleCount?'block':'none';
+}
+function loadMore(){visibleCount+=24;renderListings();}
+document.querySelectorAll('.filter-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentFilter=btn.dataset.filter;visibleCount=24;renderListings();});});
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>obs.observe(el));
 document.addEventListener('click',e=>{const dm=document.getElementById('dm-float');if(dm&&!dm.contains(e.target))dm.classList.remove('open');});
+
+const contactForm=document.getElementById('contactForm');
+if(contactForm){
+  contactForm.addEventListener('submit',e=>{
+    e.preventDefault();
+    const fd=new FormData(contactForm);
+    const subject=encodeURIComponent('Luna Styles message: '+(fd.get('subject')||'Website inquiry'));
+    const body=encodeURIComponent(`Name: ${fd.get('name')||''}
+Email: ${fd.get('email')||''}
+
+${fd.get('message')||''}`);
+    window.location.href=`mailto:lunastylesboutique@gmail.com?subject=${subject}&body=${body}`;
+  });
+}
 fetchListings(true);
 </script>
 </body>
