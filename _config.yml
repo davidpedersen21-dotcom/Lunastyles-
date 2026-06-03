@@ -1,0 +1,7 @@
+# GitHub Pages config
+include:
+  - reel.mp4
+
+webrick:
+  headers:
+    Content-Type: video/mp4
