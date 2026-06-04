@@ -9,1194 +9,338 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --saffron: #E8831A;
-    --crimson: #C42B2B;
-    --mustard: #D4A017;
-    --teal: #2A7A6F;
-    --indigo: #2C3E7A;
-    --cream: #FAF3E0;
-    --deep-brown: #2B1810;
-    --rose: #C45C6A;
-    --sage: #5A7A5A;
-    --gold: #C8962A;
+    --fuchsia:   #D4006A;
+    --hot-pink:  #FF2D78;
+    --mango:     #FF7A00;
+    --turmeric:  #F5A800;
+    --lime:      #5BB800;
+    --teal:      #009B8D;
+    --cobalt:    #1D4ED8;
+    --violet:    #7C3AED;
+    --cream:     #FFF8EE;
+    --white:     #FFFFFF;
+    --ink:       #1A0A00;
+    --warm-dark: #2B0A00;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Crimson Pro',serif; background:var(--cream); color:var(--ink); overflow-x:hidden; }
 
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Crimson Pro', serif;
-    background: var(--cream);
-    color: var(--deep-brown);
-    overflow-x: hidden;
-  }
-
-
-  /* ===== LOGO WATERMARK / STAMPS ===== */
-  .logo-divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 2rem 0;
-    background: var(--deep-brown);
-    position: relative;
-    overflow: hidden;
-  }
-  .logo-divider::before, .logo-divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(232,131,26,0.4), transparent);
-    max-width: 400px;
-  }
-  .logo-divider img {
-    width: 64px;
-    height: 64px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 12px rgba(232,131,26,0.7));
-    animation: spinSlow 20s linear infinite;
-  }
-  @keyframes spinSlow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  .section-logo-stamp {
-    width: 54px;
-    height: 54px;
-    object-fit: contain;
-    opacity: 0.18;
-    filter: sepia(1) saturate(3) hue-rotate(-10deg);
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 0.75rem;
-  }
-
-  .hero-logo-center {
-    display: block;
-    width: min(320px, 70%);
-    margin: 0 auto 2rem;
-    filter: drop-shadow(0 0 50px rgba(232,131,26,0.5)) drop-shadow(0 0 100px rgba(196,43,43,0.25));
-    animation: float 6s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
-  }
-  @keyframes glowPulse {
-    0%, 100% { filter: drop-shadow(0 0 40px rgba(232,131,26,0.45)) drop-shadow(0 0 80px rgba(196,43,43,0.2)); }
-    50% { filter: drop-shadow(0 0 70px rgba(232,131,26,0.75)) drop-shadow(0 0 120px rgba(196,43,43,0.4)); }
-  }
-
-  .footer-logo-center {
-    display: block;
-    width: 130px;
-    margin: 0 auto 1.5rem;
-    filter: drop-shadow(0 0 20px rgba(232,131,26,0.5));
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .section-watermark-logo {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    object-fit: contain;
-    opacity: 0.04;
-    pointer-events: none;
-  }
-
-  .contact-section .section-watermark-logo {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0.05;
-    width: 500px;
-    height: 500px;
-  }
-
-  .shows-section .section-watermark-logo {
-    top: -50px;
-    right: -50px;
-    opacity: 0.05;
-    width: 400px;
-    height: 400px;
-  }
-
-  /* ===== KANTHA PATTERN SVG BACKGROUNDS ===== */
-  .kantha-border-top {
-    width: 100%;
-    height: 18px;
+  /* ===== KANTHA STRIPE ===== */
+  .kantha-stripe {
+    height:14px;
     background: repeating-linear-gradient(90deg,
-      var(--crimson) 0px, var(--crimson) 12px,
-      var(--saffron) 12px, var(--saffron) 24px,
-      var(--mustard) 24px, var(--mustard) 36px,
-      var(--teal) 36px, var(--teal) 48px,
-      var(--indigo) 48px, var(--indigo) 60px,
-      var(--rose) 60px, var(--rose) 72px
+      var(--fuchsia)  0px,  var(--fuchsia)  20px,
+      var(--mango)    20px, var(--mango)    40px,
+      var(--turmeric) 40px, var(--turmeric) 60px,
+      var(--lime)     60px, var(--lime)     80px,
+      var(--teal)     80px, var(--teal)    100px,
+      var(--cobalt)  100px, var(--cobalt)  120px,
+      var(--violet)  120px, var(--violet)  140px,
+      var(--hot-pink)140px, var(--hot-pink)160px
     );
   }
 
+  /* ===== FLOWER PATTERN (SVG inline BG) ===== */
+  .floral-bg {
+    background-color: var(--warm-dark);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none'%3E%3Ccircle cx='40' cy='40' r='6' fill='%23FF7A00' opacity='.25'/%3E%3Ccircle cx='40' cy='40' r='10' stroke='%23F5A800' stroke-width='1.5' opacity='.2'/%3E%3Cellipse cx='40' cy='26' rx='5' ry='9' fill='%23D4006A' opacity='.2'/%3E%3Cellipse cx='40' cy='54' rx='5' ry='9' fill='%23D4006A' opacity='.2'/%3E%3Cellipse cx='26' cy='40' rx='9' ry='5' fill='%23009B8D' opacity='.2'/%3E%3Cellipse cx='54' cy='40' rx='9' ry='5' fill='%23009B8D' opacity='.2'/%3E%3Ccircle cx='40' cy='40' r='3' fill='%23F5A800' opacity='.35'/%3E%3Ccircle cx='0' cy='0' r='3' fill='%23FF2D78' opacity='.15'/%3E%3Ccircle cx='80' cy='0' r='3' fill='%23FF2D78' opacity='.15'/%3E%3Ccircle cx='0' cy='80' r='3' fill='%23FF2D78' opacity='.15'/%3E%3Ccircle cx='80' cy='80' r='3' fill='%23FF2D78' opacity='.15'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .floral-light {
+    background-color: #FFF0D8;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none'%3E%3Ccircle cx='30' cy='30' r='4' fill='%23D4006A' opacity='.12'/%3E%3Cellipse cx='30' cy='19' rx='4' ry='7' fill='%23FF7A00' opacity='.1'/%3E%3Cellipse cx='30' cy='41' rx='4' ry='7' fill='%23FF7A00' opacity='.1'/%3E%3Cellipse cx='19' cy='30' rx='7' ry='4' fill='%23009B8D' opacity='.1'/%3E%3Cellipse cx='41' cy='30' rx='7' ry='4' fill='%23009B8D' opacity='.1'/%3E%3Ccircle cx='30' cy='30' r='2' fill='%23F5A800' opacity='.2'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* ===== LOGO — always on white circle ===== */
+  .logo-circle {
+    background: white;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    flex-shrink: 0;
+  }
+  .logo-circle img { display:block; border-radius:50%; object-fit:contain; }
+
   /* ===== NAV ===== */
   nav {
-    background: var(--deep-brown);
+    background: var(--warm-dark);
     padding: 0 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: sticky;
     top: 0;
-    z-index: 100;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    z-index: 200;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    border-bottom: 3px solid var(--mango);
   }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 0;
-  }
-
-  .nav-logo img {
-    width: 72px;
-    height: 72px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 14px rgba(232,131,26,0.9)) drop-shadow(0 0 5px rgba(196,43,43,0.5));
-    transition: transform 0.35s, filter 0.35s;
-  }
-  .nav-logo img:hover {
-    transform: scale(1.1) rotate(-4deg);
-    filter: drop-shadow(0 0 22px rgba(232,131,26,1)) drop-shadow(0 0 10px rgba(196,43,43,0.8));
-  }
-  .nav-logo span {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.55rem;
-    color: var(--cream);
-    letter-spacing: 0.05em;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 0;
-    list-style: none;
-  }
-
+  .nav-logo { display:flex; align-items:center; gap:.8rem; padding:.4rem 0; text-decoration:none; }
+  .nav-logo .logo-circle { width:64px; height:64px; }
+  .nav-logo .logo-circle img { width:52px; height:52px; }
+  .nav-logo-text { font-family:'Playfair Display',serif; font-size:1.55rem; color:white; letter-spacing:.04em; }
+  .nav-links { display:flex; gap:0; list-style:none; }
   .nav-links a {
-    color: var(--cream);
-    text-decoration: none;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 1.2rem 1.1rem;
-    display: block;
-    position: relative;
-    transition: color 0.3s;
+    color:rgba(255,255,255,.8);
+    text-decoration:none;
+    font-family:'Josefin Sans',sans-serif;
+    font-size:.75rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    padding:1.3rem 1rem;
+    display:block;
+    position:relative;
+    transition:color .3s;
   }
-
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 3px;
-    background: var(--saffron);
-    transition: width 0.3s;
-  }
-
-  .nav-links a:hover { color: var(--saffron); }
-  .nav-links a:hover::after { width: 100%; }
+  .nav-links a::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:0; height:3px; background:var(--hot-pink); transition:width .3s; }
+  .nav-links a:hover { color:var(--turmeric); }
+  .nav-links a:hover::after { width:100%; }
 
   /* ===== HERO ===== */
   .hero {
-    min-height: 92vh;
-    background: var(--deep-brown);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-    overflow: hidden;
+    min-height:92vh;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    position:relative;
+    overflow:hidden;
   }
-
-  .hero-pattern {
-    position: absolute;
-    inset: 0;
-    opacity: 0.07;
-    background-image:
-      radial-gradient(circle at 20% 30%, var(--saffron) 2px, transparent 2px),
-      radial-gradient(circle at 40% 70%, var(--crimson) 2px, transparent 2px),
-      radial-gradient(circle at 60% 20%, var(--teal) 2px, transparent 2px),
-      radial-gradient(circle at 80% 60%, var(--mustard) 2px, transparent 2px),
-      radial-gradient(circle at 10% 80%, var(--rose) 2px, transparent 2px);
-    background-size: 80px 80px;
-    animation: patternDrift 20s linear infinite;
+  .hero-left {
+    background: linear-gradient(135deg, #1A0500 0%, #2B0A00 50%, #1A0020 100%);
+    display:flex; flex-direction:column; justify-content:center;
+    padding:4rem 3rem 4rem 5rem;
+    position:relative; z-index:2;
   }
-
-  @keyframes patternDrift {
-    from { background-position: 0 0; }
-    to { background-position: 80px 80px; }
+  .hero-left::before {
+    content:'';
+    position:absolute; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='none'%3E%3Ccircle cx='50' cy='50' r='8' stroke='%23FF7A00' stroke-width='1' opacity='.12'/%3E%3Cellipse cx='50' cy='28' rx='6' ry='12' fill='%23D4006A' opacity='.1'/%3E%3Cellipse cx='50' cy='72' rx='6' ry='12' fill='%23D4006A' opacity='.1'/%3E%3Cellipse cx='28' cy='50' rx='12' ry='6' fill='%23009B8D' opacity='.1'/%3E%3Cellipse cx='72' cy='50' rx='12' ry='6' fill='%23009B8D' opacity='.1'/%3E%3C/g%3E%3C/svg%3E");
+    pointer-events:none;
   }
+  .hero-eyebrow { font-family:'Josefin Sans',sans-serif; font-size:.72rem; letter-spacing:.3em; text-transform:uppercase; color:var(--turmeric); margin-bottom:1rem; animation:fadeUp .8s ease both; }
+  .hero-title { font-family:'Playfair Display',serif; font-size:clamp(2.8rem,5vw,5.2rem); line-height:1; color:white; margin-bottom:1.5rem; animation:fadeUp .8s ease .15s both; }
+  .hero-title em { font-style:italic; color:var(--hot-pink); display:block; }
+  .hero-subtitle { font-size:1.15rem; color:rgba(255,255,255,.7); line-height:1.75; max-width:430px; margin-bottom:2.5rem; animation:fadeUp .8s ease .3s both; }
+  .hero-buttons { display:flex; gap:1rem; flex-wrap:wrap; animation:fadeUp .8s ease .45s both; }
 
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 4rem 3rem 4rem 5rem;
-    position: relative;
-    z-index: 2;
+  .hero-right {
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+    background: linear-gradient(135deg,#3D0050,#1A0040,#00302A);
   }
-
-  .hero-eyebrow {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--saffron);
-    margin-bottom: 1rem;
-    animation: fadeUp 0.8s ease both;
+  .hero-right::before {
+    content:'';
+    position:absolute; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none'%3E%3Ccircle cx='60' cy='60' r='10' stroke='%23F5A800' stroke-width='1.5' opacity='.15'/%3E%3Ccircle cx='60' cy='60' r='20' stroke='%23D4006A' stroke-width='1' opacity='.1'/%3E%3Ccircle cx='60' cy='60' r='30' stroke='%23009B8D' stroke-width='1' opacity='.08'/%3E%3Cellipse cx='60' cy='32' rx='7' ry='14' fill='%23FF7A00' opacity='.15'/%3E%3Cellipse cx='60' cy='88' rx='7' ry='14' fill='%23FF7A00' opacity='.15'/%3E%3Cellipse cx='32' cy='60' rx='14' ry='7' fill='%23FF2D78' opacity='.15'/%3E%3Cellipse cx='88' cy='60' rx='14' ry='7' fill='%23FF2D78' opacity='.15'/%3E%3C/g%3E%3C/svg%3E");
+    animation:patternDrift 25s linear infinite;
   }
+  @keyframes patternDrift { from{background-position:0 0} to{background-position:120px 120px} }
 
-  .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 5vw, 5.5rem);
-    line-height: 1;
-    color: var(--cream);
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.8s ease 0.15s both;
+  .hero-logo-wrap {
+    position:relative; z-index:2;
+    background:white;
+    border-radius:50%;
+    padding:24px;
+    width:min(380px,80%);
+    aspect-ratio:1;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 0 0 8px rgba(255,122,0,.25), 0 0 0 16px rgba(212,0,106,.15), 0 0 60px rgba(255,122,0,.4), 0 0 120px rgba(212,0,106,.25);
+    animation: float 6s ease-in-out infinite, ringGlow 3s ease-in-out infinite;
   }
-
-  .hero-title em {
-    font-style: italic;
-    color: var(--saffron);
-    display: block;
+  .hero-logo-wrap img { width:90%; height:90%; object-fit:contain; border-radius:50%; }
+  @keyframes ringGlow {
+    0%,100% { box-shadow:0 0 0 8px rgba(255,122,0,.25),0 0 0 16px rgba(212,0,106,.15),0 0 60px rgba(255,122,0,.4),0 0 120px rgba(212,0,106,.25); }
+    50%      { box-shadow:0 0 0 12px rgba(255,122,0,.4),0 0 0 24px rgba(212,0,106,.25),0 0 90px rgba(255,122,0,.6),0 0 160px rgba(212,0,106,.35); }
   }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-18px)} }
 
-  .hero-subtitle {
-    font-size: 1.2rem;
-    color: rgba(250,243,224,0.75);
-    line-height: 1.7;
-    max-width: 440px;
-    margin-bottom: 2.5rem;
-    animation: fadeUp 0.8s ease 0.3s both;
-  }
-
-  .hero-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    animation: fadeUp 0.8s ease 0.45s both;
-  }
-
+  /* ===== BUTTONS ===== */
   .btn {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0.9rem 2rem;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
+    font-family:'Josefin Sans',sans-serif; font-size:.8rem; letter-spacing:.15em;
+    text-transform:uppercase; padding:.9rem 2rem; border:none; cursor:pointer;
+    text-decoration:none; display:inline-block; transition:all .3s; position:relative; overflow:hidden;
   }
+  .btn::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:rgba(255,255,255,.18); transform:skewX(-20deg); transition:left .4s; }
+  .btn:hover::before { left:100%; }
+  .btn-primary { background:var(--hot-pink); color:white; }
+  .btn-primary:hover { background:var(--fuchsia); transform:translateY(-3px); box-shadow:0 10px 30px rgba(212,0,106,.5); }
+  .btn-outline { background:transparent; color:white; border:2px solid rgba(255,255,255,.4); }
+  .btn-outline:hover { border-color:var(--turmeric); color:var(--turmeric); transform:translateY(-3px); }
 
-  .btn::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: rgba(255,255,255,0.15);
-    transform: skewX(-20deg);
-    transition: left 0.4s;
+  /* ===== LOGO DIVIDER ===== */
+  .logo-divider {
+    display:flex; align-items:center; justify-content:center; gap:1.5rem;
+    padding:1.5rem 2rem;
+    background:var(--warm-dark);
+    position:relative;
   }
-
-  .btn:hover::before { left: 100%; }
-
-  .btn-primary {
-    background: var(--saffron);
-    color: var(--deep-brown);
+  .logo-divider::before,.logo-divider::after {
+    content:''; flex:1; height:2px; max-width:380px;
+    background:linear-gradient(90deg,transparent,var(--mango),var(--hot-pink),transparent);
   }
+  .logo-divider .logo-circle { width:56px; height:56px; border:2px solid var(--mango); }
+  .logo-divider .logo-circle img { width:44px; height:44px; animation:spinSlow 20s linear infinite; }
+  @keyframes spinSlow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 
-  .btn-primary:hover {
-    background: var(--mustard);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(232,131,26,0.4);
-  }
+  /* ===== SECTION HELPERS ===== */
+  .section-label { font-family:'Josefin Sans',sans-serif; font-size:.7rem; letter-spacing:.3em; text-transform:uppercase; color:var(--mango); margin-bottom:.75rem; }
+  .section-title { font-family:'Playfair Display',serif; font-size:clamp(1.9rem,3.5vw,3.2rem); line-height:1.1; color:var(--ink); margin-bottom:1rem; }
+  .section-title em { font-style:italic; color:var(--fuchsia); }
+  .section-title-light { color:white; }
 
-  .btn-outline {
-    background: transparent;
-    color: var(--cream);
-    border: 2px solid rgba(250,243,224,0.4);
-  }
-
-  .btn-outline:hover {
-    border-color: var(--saffron);
-    color: var(--saffron);
-    transform: translateY(-2px);
-  }
-
-  .hero-visual {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem;
-    animation: fadeIn 1s ease 0.5s both;
-  }
-
-  .hero-logo-giant {
-    width: min(420px, 90%);
-    filter: drop-shadow(0 0 60px rgba(232,131,26,0.35)) drop-shadow(0 0 120px rgba(196,43,43,0.2));
-    animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-  }
-
-  /* Decorative rings */
-  .hero-ring {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px solid;
-    animation: ringPulse 4s ease-in-out infinite;
-  }
-
-  .hero-ring:nth-child(1) {
-    width: 500px; height: 500px;
-    border-color: rgba(232,131,26,0.15);
-    animation-delay: 0s;
-  }
-
-  .hero-ring:nth-child(2) {
-    width: 600px; height: 600px;
-    border-color: rgba(196,43,43,0.1);
-    animation-delay: 1s;
-  }
-
-  .hero-ring:nth-child(3) {
-    width: 700px; height: 700px;
-    border-color: rgba(42,122,111,0.08);
-    animation-delay: 2s;
-  }
-
-  @keyframes ringPulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.05); opacity: 0.5; }
-  }
-
-  /* ===== SECTION LABELS ===== */
-  .section-label {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--saffron);
-    margin-bottom: 0.75rem;
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    line-height: 1.1;
-    color: var(--deep-brown);
-    margin-bottom: 1rem;
-  }
-
-  .section-title em {
-    font-style: italic;
-    color: var(--saffron);
-  }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+  .reveal { opacity:0; transform:translateY(40px); transition:opacity .7s ease,transform .7s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
 
   /* ===== LIVE SHOWS ===== */
-  .shows-section {
-    background: var(--deep-brown);
-    padding: 5rem 2rem;
-    position: relative;
-    overflow: hidden;
-  }
+  .shows-section { padding:5rem 2rem; position:relative; overflow:hidden; }
+  .shows-section.floral-bg::before { content:''; position:absolute; inset:0; background:inherit; z-index:0; }
+  .shows-container { max-width:1100px; margin:0 auto; text-align:center; position:relative; z-index:1; }
 
-  .shows-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 20px,
-      rgba(232,131,26,0.03) 20px,
-      rgba(232,131,26,0.03) 21px
-    );
-  }
+  .live-badge { display:inline-flex; align-items:center; gap:.5rem; background:var(--hot-pink); color:white; font-family:'Josefin Sans',sans-serif; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; padding:.4rem 1.1rem; margin-bottom:1.5rem; }
+  .live-dot { width:8px; height:8px; background:white; border-radius:50%; animation:blink 1.2s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
 
-  .shows-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .shows-container .section-title {
-    color: var(--cream);
-  }
-
-  .shows-container .section-label {
-    color: var(--mustard);
-  }
-
-  .live-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--crimson);
-    color: white;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 0.4rem 1rem;
-    border-radius: 2px;
-    margin-bottom: 1.5rem;
-  }
-
-  .live-dot {
-    width: 8px; height: 8px;
-    background: white;
-    border-radius: 50%;
-    animation: blink 1.2s ease-in-out infinite;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.2; }
-  }
-
-  .show-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-  }
-
+  .show-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; margin-top:2.5rem; }
   .show-card {
-    background: rgba(250,243,224,0.05);
-    border: 1px solid rgba(232,131,26,0.25);
-    padding: 2rem 1.5rem;
-    text-align: center;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .show-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--saffron), var(--crimson), var(--teal));
-  }
-
-  .show-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--saffron);
-    background: rgba(232,131,26,0.08);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-  }
-
-  .show-day {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    color: var(--saffron);
-    font-weight: 900;
-  }
-
-  .show-time {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.85rem;
-    color: rgba(250,243,224,0.6);
-    letter-spacing: 0.1em;
-    margin: 0.25rem 0 1rem;
-  }
-
-  .show-desc {
-    color: rgba(250,243,224,0.75);
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-  }
-
-  .btn-whatnot {
-    background: linear-gradient(135deg, #7B2FF7, #C42B8A);
-    color: white;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.3s;
-  }
-
-  .btn-whatnot:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(123,47,247,0.5);
-  }
-
-  /* ===== VIDEO SECTION ===== */
-  .video-section {
-    padding: 5rem 2rem;
-    background: var(--cream);
-    position: relative;
-  }
-
-  .video-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C42B2B' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    opacity: 0.5;
-  }
-
-  .video-container {
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .video-wrapper {
-    position: relative;
-    margin-top: 2.5rem;
-    border: 4px solid var(--deep-brown);
-    box-shadow: 12px 12px 0 var(--saffron), 24px 24px 0 rgba(196,43,43,0.2);
-    overflow: hidden;
-  }
-
-  .video-wrapper video {
-    width: 100%;
-    display: block;
-    max-height: 70vh;
-    object-fit: cover;
-  }
-
-  /* Kantha corner decorations */
-  .kantha-corner {
-    position: absolute;
-    width: 40px; height: 40px;
-    z-index: 2;
-  }
-
-  .kantha-corner svg { width: 100%; height: 100%; }
-  .kantha-corner.tl { top: -2px; left: -2px; }
-  .kantha-corner.tr { top: -2px; right: -2px; transform: scaleX(-1); }
-  .kantha-corner.bl { bottom: -2px; left: -2px; transform: scaleY(-1); }
-  .kantha-corner.br { bottom: -2px; right: -2px; transform: scale(-1); }
-
-  /* ===== SHOP / ETSY GRID ===== */
-  .shop-section {
-    padding: 5rem 2rem;
-    background: #FFF8EE;
-    position: relative;
-  }
-
-  .shop-container {
-    max-width: 1300px;
-    margin: 0 auto;
-  }
-
-  .shop-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 2.5rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .product-card {
-    background: white;
-    overflow: hidden;
-    transition: all 0.35s;
-    cursor: pointer;
-    position: relative;
-    border: 1px solid rgba(43,24,16,0.08);
-  }
-
-  .product-card::after {
-    content: 'Shop on Etsy →';
-    position: absolute;
-    inset: 0;
-    background: rgba(43,24,16,0.85);
-    color: var(--cream);
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .product-card:hover::after { opacity: 1; }
-
-  .product-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 50px rgba(43,24,16,0.2);
-    border-color: var(--saffron);
-  }
-
-  .product-img {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s;
-  }
-
-  .product-card:hover .product-img {
-    transform: scale(1.08);
-  }
-
-  .product-info {
-    padding: 0.85rem;
-  }
-
-  .product-name {
-    font-family: 'Crimson Pro', serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--deep-brown);
-    line-height: 1.3;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .product-tag {
-    display: inline-block;
-    margin-top: 0.4rem;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--teal);
-    background: rgba(42,122,111,0.1);
-    padding: 0.2rem 0.5rem;
-  }
-
-  /* ===== INSTAGRAM SECTION ===== */
-  .instagram-section {
-    padding: 5rem 2rem;
-    background: var(--deep-brown);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .instagram-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(232,131,26,0.12) 0%, transparent 70%);
-  }
-
-  .insta-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  .insta-container .section-title { color: var(--cream); }
-  .insta-container .section-label { color: var(--mustard); }
-
-  .insta-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-  }
-
-  .insta-card {
-    background: rgba(250,243,224,0.05);
-    border: 1px solid rgba(250,243,224,0.1);
-    overflow: hidden;
-    transition: all 0.35s;
-    text-decoration: none;
-    display: block;
-    position: relative;
-  }
-
-  .insta-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(232,131,26,0.5);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-  }
-
-  .insta-thumb {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    display: block;
-    filter: saturate(1.1);
-    transition: transform 0.5s, filter 0.3s;
-  }
-
-  .insta-card:hover .insta-thumb {
-    transform: scale(1.05);
-    filter: saturate(1.3);
-  }
-
-  .insta-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(43,24,16,0.9) 0%, transparent 50%);
-    display: flex;
-    align-items: flex-end;
-    padding: 1rem;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .insta-card:hover .insta-overlay { opacity: 1; }
-
-  .insta-label {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--cream);
-  }
-
-  .insta-bottom {
-    padding: 0.75rem 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .insta-icon {
-    width: 16px; height: 16px;
-    fill: var(--saffron);
-    flex-shrink: 0;
-  }
-
-  .insta-handle {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    color: rgba(250,243,224,0.5);
-    text-transform: uppercase;
-  }
-
-  /* ===== ABOUT SECTION ===== */
-  .about-section {
-    padding: 6rem 2rem;
-    background: var(--cream);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .about-section::before {
-    content: '';
-    position: absolute;
-    right: -200px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle, rgba(232,131,26,0.06) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-
-  .about-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-
-  .about-image-wrap {
-    position: relative;
-  }
-
-  .about-photo {
-    width: 100%;
-    max-width: 420px;
-    display: block;
-    border: 4px solid var(--deep-brown);
-    box-shadow: 16px 16px 0 var(--saffron);
-    filter: saturate(0.9);
-    transition: filter 0.3s;
-    object-fit: cover;
-    object-position: top center;
-    aspect-ratio: 3/4;
-  }
-
-  .about-photo:hover { filter: saturate(1.1); }
-
-  .about-badge {
-    position: absolute;
-    bottom: -20px;
-    right: 20px;
-    background: var(--deep-brown);
-    color: var(--cream);
-    padding: 1rem 1.5rem;
-    border: 2px solid var(--saffron);
-  }
-
-  .about-badge strong {
-    display: block;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    color: var(--saffron);
-  }
-
-  .about-badge span {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(250,243,224,0.6);
-  }
-
-  .about-text p {
-    font-size: 1.1rem;
-    line-height: 1.85;
-    color: rgba(43,24,16,0.8);
-    margin-bottom: 1.25rem;
-  }
-
-  .about-text p strong {
-    color: var(--saffron);
-  }
-
-  .about-stats {
-    display: flex;
-    gap: 2rem;
-    margin: 2rem 0;
-    padding: 1.5rem 0;
-    border-top: 1px solid rgba(43,24,16,0.1);
-    border-bottom: 1px solid rgba(43,24,16,0.1);
-  }
-
-  .stat-item { text-align: center; }
-
-  .stat-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    color: var(--saffron);
-    display: block;
-    font-weight: 900;
-  }
-
-  .stat-label {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(43,24,16,0.5);
-  }
-
-  /* ===== CONTACT SECTION ===== */
-  .contact-section {
-    padding: 5rem 2rem;
-    background: linear-gradient(135deg, var(--deep-brown) 0%, #1A0F08 100%);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .contact-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(232,131,26,0.04) 39px, rgba(232,131,26,0.04) 40px),
-      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(232,131,26,0.04) 39px, rgba(232,131,26,0.04) 40px);
-  }
-
-  .contact-container {
-    max-width: 700px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-  }
-
-  .contact-container .section-title { color: var(--cream); }
-  .contact-container .section-label { color: var(--mustard); }
-
-  .contact-form {
-    margin-top: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    text-align: left;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  .form-group label {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(250,243,224,0.6);
-  }
-
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    background: rgba(250,243,224,0.05);
-    border: 1px solid rgba(250,243,224,0.15);
-    color: var(--cream);
-    padding: 0.85rem 1rem;
-    font-family: 'Crimson Pro', serif;
-    font-size: 1rem;
-    transition: border-color 0.3s, background 0.3s;
-    outline: none;
-    width: 100%;
-  }
-
-  .form-group input:focus,
-  .form-group textarea:focus,
-  .form-group select:focus {
-    border-color: var(--saffron);
-    background: rgba(232,131,26,0.08);
-  }
-
-  .form-group select option {
-    background: var(--deep-brown);
-  }
-
-  .form-group textarea { resize: vertical; min-height: 130px; }
-
-  .form-submit {
-    text-align: center;
-    margin-top: 0.5rem;
-  }
-
-  .btn-submit {
-    background: var(--saffron);
-    color: var(--deep-brown);
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 1rem 3rem;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: 600;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn-submit::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: rgba(255,255,255,0.2);
-    transform: skewX(-20deg);
-    transition: left 0.4s;
-  }
-
-  .btn-submit:hover::before { left: 100%; }
-
-  .btn-submit:hover {
-    background: var(--mustard);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(232,131,26,0.4);
-  }
-
-  .form-success {
-    display: none;
-    text-align: center;
-    padding: 2rem;
-    color: var(--cream);
-  }
-
-  .form-success h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    color: var(--saffron);
-    margin-bottom: 0.5rem;
-  }
+    background:rgba(255,255,255,.08); border:2px solid rgba(245,168,0,.3);
+    padding:2.5rem 2rem; text-align:center; transition:all .3s; position:relative; overflow:hidden;
+  }
+  .show-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--hot-pink),var(--mango),var(--lime),var(--teal)); }
+  .show-card:hover { transform:translateY(-10px); border-color:var(--turmeric); background:rgba(255,255,255,.13); box-shadow:0 25px 60px rgba(0,0,0,.4); }
+  .show-day { font-family:'Playfair Display',serif; font-size:2.4rem; color:var(--turmeric); font-weight:900; }
+  .show-time { font-family:'Josefin Sans',sans-serif; font-size:.85rem; color:rgba(255,255,255,.65); letter-spacing:.1em; margin:.3rem 0 1rem; }
+  .show-desc { color:rgba(255,255,255,.75); font-size:1.05rem; line-height:1.65; margin-bottom:1.75rem; }
+  .btn-whatnot { background:linear-gradient(135deg,#7B2FF7,#C42B8A); color:white; font-family:'Josefin Sans',sans-serif; font-size:.75rem; letter-spacing:.15em; text-transform:uppercase; padding:.8rem 1.75rem; border:none; cursor:pointer; text-decoration:none; display:inline-block; transition:all .3s; }
+  .btn-whatnot:hover { transform:translateY(-3px); box-shadow:0 10px 30px rgba(123,47,247,.5); }
+
+  /* ===== VIDEO ===== */
+  .video-section { padding:5rem 2rem; position:relative; }
+  .video-container { max-width:860px; margin:0 auto; text-align:center; }
+  .video-wrapper { margin-top:2.5rem; position:relative; border:5px solid var(--ink); box-shadow:14px 14px 0 var(--hot-pink), 28px 28px 0 rgba(245,168,0,.35); overflow:hidden; background:#000; }
+  .video-wrapper video { width:100%; display:block; max-height:75vh; object-fit:contain; }
+  .video-fallback { display:none; padding:3rem; background:#111; color:white; text-align:center; font-family:'Josefin Sans',sans-serif; }
+
+  /* ===== SHOP ===== */
+  .shop-section { padding:5rem 2rem; }
+  .shop-container { max-width:1320px; margin:0 auto; }
+  .shop-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:2.5rem; flex-wrap:wrap; gap:1rem; }
+  .product-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:1.5rem; }
+  .product-card { background:white; overflow:hidden; transition:all .35s; cursor:pointer; position:relative; border:2px solid transparent; text-decoration:none; display:block; }
+  .product-card::after { content:'Shop on Etsy →'; position:absolute; inset:0; background:rgba(26,5,0,.88); color:white; font-family:'Josefin Sans',sans-serif; font-size:.8rem; letter-spacing:.2em; text-transform:uppercase; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity .3s; }
+  .product-card:hover::after { opacity:1; }
+  .product-card:hover { transform:translateY(-8px) scale(1.02); box-shadow:0 20px 50px rgba(212,0,106,.2); border-color:var(--hot-pink); }
+  .product-img { width:100%; aspect-ratio:1; object-fit:cover; display:block; transition:transform .5s; }
+  .product-card:hover .product-img { transform:scale(1.07); }
+  .product-info { padding:.85rem; }
+  .product-name { font-family:'Crimson Pro',serif; font-size:.9rem; font-weight:600; color:var(--ink); line-height:1.3; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .product-tag { display:inline-block; margin-top:.4rem; font-family:'Josefin Sans',sans-serif; font-size:.65rem; letter-spacing:.1em; text-transform:uppercase; color:white; background:var(--fuchsia); padding:.2rem .6rem; }
+
+  /* ===== INSTAGRAM EMBEDS ===== */
+  .instagram-section { padding:5rem 2rem; position:relative; overflow:hidden; }
+  .insta-container { max-width:1200px; margin:0 auto; position:relative; z-index:1; }
+  .insta-intro { text-align:center; margin-bottom:3rem; }
+
+  .insta-embed-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:2rem;
+    align-items:start;
+  }
+  .insta-embed-wrap {
+    background:white;
+    border-radius:4px;
+    overflow:hidden;
+    box-shadow:0 8px 30px rgba(0,0,0,.15);
+    border:3px solid transparent;
+    transition:border-color .3s, transform .3s, box-shadow .3s;
+  }
+  .insta-embed-wrap:hover { border-color:var(--hot-pink); transform:translateY(-6px); box-shadow:0 20px 50px rgba(212,0,106,.2); }
+  .insta-embed-wrap blockquote { margin:0 !important; }
+
+  .insta-follow-btn {
+    display:block; text-align:center; margin-top:2.5rem;
+  }
+
+  /* ===== ABOUT ===== */
+  .about-section { padding:6rem 2rem; position:relative; overflow:hidden; }
+  .about-container { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+  .about-image-wrap { position:relative; }
+  .about-photo { width:100%; max-width:430px; display:block; border:5px solid var(--ink); box-shadow:16px 16px 0 var(--hot-pink); object-fit:cover; object-position:top center; aspect-ratio:3/4; }
+  .about-badge { position:absolute; bottom:-20px; right:10px; background:var(--warm-dark); color:white; padding:1rem 1.5rem; border:2px solid var(--turmeric); }
+  .about-badge strong { display:block; font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--turmeric); }
+  .about-badge span { font-family:'Josefin Sans',sans-serif; font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.6); }
+  .about-text p { font-size:1.1rem; line-height:1.85; color:rgba(26,5,0,.8); margin-bottom:1.25rem; }
+  .about-text p strong { color:var(--fuchsia); }
+  .about-stats { display:flex; gap:2rem; margin:2rem 0; padding:1.5rem 0; border-top:2px solid var(--hot-pink); border-bottom:2px solid var(--hot-pink); }
+  .stat-number { font-family:'Playfair Display',serif; font-size:2rem; color:var(--fuchsia); display:block; font-weight:900; }
+  .stat-label { font-family:'Josefin Sans',sans-serif; font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(26,5,0,.5); }
+
+  /* ===== CONTACT ===== */
+  .contact-section { padding:5rem 2rem; position:relative; overflow:hidden; }
+  .contact-container { max-width:700px; margin:0 auto; position:relative; z-index:1; text-align:center; }
+  .contact-form { margin-top:2.5rem; display:flex; flex-direction:column; gap:1.25rem; text-align:left; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; }
+  .form-group { display:flex; flex-direction:column; gap:.4rem; }
+  .form-group label { font-family:'Josefin Sans',sans-serif; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.6); }
+  .form-group input,.form-group textarea,.form-group select { background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.2); color:white; padding:.85rem 1rem; font-family:'Crimson Pro',serif; font-size:1rem; transition:border-color .3s,background .3s; outline:none; width:100%; }
+  .form-group input:focus,.form-group textarea:focus,.form-group select:focus { border-color:var(--turmeric); background:rgba(245,168,0,.1); }
+  .form-group select option { background:#2B0A00; }
+  .form-group textarea { resize:vertical; min-height:130px; }
+  .btn-submit { background:var(--hot-pink); color:white; font-family:'Josefin Sans',sans-serif; font-size:.85rem; letter-spacing:.2em; text-transform:uppercase; padding:1rem 3rem; border:none; cursor:pointer; transition:all .3s; font-weight:600; }
+  .btn-submit:hover { background:var(--fuchsia); transform:translateY(-3px); box-shadow:0 10px 30px rgba(212,0,106,.5); }
+  .form-success { display:none; text-align:center; padding:2rem; color:white; }
+  .form-success h3 { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--turmeric); margin-bottom:.5rem; }
 
   /* ===== FOOTER ===== */
-  footer {
-    background: #140C06;
-    padding: 3rem 2rem 1.5rem;
-  }
-
-  .footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .footer-top {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(250,243,224,0.08);
-    margin-bottom: 1.5rem;
-  }
-
-  .footer-brand img {
-    width: 80px;
-    margin-bottom: 0.75rem;
-    filter: drop-shadow(0 0 10px rgba(232,131,26,0.4));
-  }
-
-  .footer-brand p {
-    font-size: 0.9rem;
-    color: rgba(250,243,224,0.5);
-    line-height: 1.7;
-    max-width: 260px;
-  }
-
-  .footer-col h4 {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--saffron);
-    margin-bottom: 1rem;
-  }
-
-  .footer-col a {
-    display: block;
-    color: rgba(250,243,224,0.5);
-    text-decoration: none;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-    transition: color 0.3s;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
-  }
-
-  .footer-col a:hover { color: var(--saffron); }
-
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .footer-copy {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    color: rgba(250,243,224,0.25);
-  }
-
-  .social-links {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .social-links a {
-    color: rgba(250,243,224,0.35);
-    text-decoration: none;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    transition: color 0.3s;
-  }
-
-  .social-links a:hover { color: var(--saffron); }
-
-  /* ===== ANIMATIONS ===== */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ===== DIVIDER ===== */
-  .kantha-divider {
-    height: 8px;
-    background: repeating-linear-gradient(90deg,
-      var(--crimson) 0px, var(--crimson) 30px,
-      var(--saffron) 30px, var(--saffron) 60px,
-      var(--mustard) 60px, var(--mustard) 90px,
-      var(--teal) 90px, var(--teal) 120px,
-      var(--indigo) 120px, var(--indigo) 150px,
-      var(--rose) 150px, var(--rose) 180px,
-      var(--sage) 180px, var(--sage) 210px
-    );
-  }
+  footer { background:#0D0500; padding:3rem 2rem 1.5rem; }
+  .footer-inner { max-width:1100px; margin:0 auto; }
+  .footer-logo-row { text-align:center; padding:1rem 0 2.5rem; border-bottom:2px solid rgba(245,168,0,.2); margin-bottom:2rem; }
+  .footer-logo-row .logo-circle { width:110px; height:110px; margin:0 auto 1rem; border:3px solid var(--mango); }
+  .footer-logo-row .logo-circle img { width:94px; height:94px; animation:float 6s ease-in-out infinite; }
+  .footer-tagline { font-family:'Josefin Sans',sans-serif; font-size:.7rem; letter-spacing:.3em; text-transform:uppercase; color:rgba(255,255,255,.3); }
+  .footer-top { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; padding-bottom:2rem; border-bottom:1px solid rgba(255,255,255,.08); margin-bottom:1.5rem; }
+  .footer-brand .logo-circle { width:60px; height:60px; margin-bottom:.75rem; }
+  .footer-brand .logo-circle img { width:48px; height:48px; }
+  .footer-brand p { font-size:.9rem; color:rgba(255,255,255,.45); line-height:1.7; max-width:260px; margin-top:.5rem; }
+  .footer-col h4 { font-family:'Josefin Sans',sans-serif; font-size:.7rem; letter-spacing:.25em; text-transform:uppercase; color:var(--mango); margin-bottom:1rem; }
+  .footer-col a { display:block; color:rgba(255,255,255,.45); text-decoration:none; font-family:'Josefin Sans',sans-serif; font-size:.8rem; letter-spacing:.05em; margin-bottom:.5rem; transition:color .3s; }
+  .footer-col a:hover { color:var(--turmeric); }
+  .footer-bottom { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+  .footer-copy { font-family:'Josefin Sans',sans-serif; font-size:.7rem; letter-spacing:.1em; color:rgba(255,255,255,.2); }
+  .social-links { display:flex; gap:1rem; }
+  .social-links a { color:rgba(255,255,255,.3); text-decoration:none; font-family:'Josefin Sans',sans-serif; font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; transition:color .3s; }
+  .social-links a:hover { color:var(--turmeric); }
 
   /* ===== RESPONSIVE ===== */
-  @media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-content { padding: 3rem 1.5rem 2rem; }
-    .hero-visual { display: none; }
-    .about-container { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
-    .nav-links { display: none; }
+  @media(max-width:768px) {
+    .hero { grid-template-columns:1fr; }
+    .hero-left { padding:3rem 1.5rem 2rem; }
+    .hero-right { min-height:55vw; }
+    .hero-logo-wrap { width:min(220px,70%); }
+    .about-container { grid-template-columns:1fr; }
+    .form-row { grid-template-columns:1fr; }
+    .footer-top { grid-template-columns:1fr; gap:2rem; }
+    .nav-links { display:none; }
+    .insta-embed-grid { grid-template-columns:1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- TOP BORDER -->
-<div class="kantha-border-top"></div>
+<div class="kantha-stripe"></div>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    <img src="logo.jpeg" alt="Luna Styles">
-    <span>Luna Styles</span>
-  </div>
+  <a href="#" class="nav-logo">
+    <div class="logo-circle">
+      <img src="logo.jpeg" alt="Luna Styles Logo">
+    </div>
+    <span class="nav-logo-text">Luna Styles</span>
+  </a>
   <ul class="nav-links">
     <li><a href="#shows">Live Shows</a></li>
     <li><a href="#watch">Watch</a></li>
@@ -1209,9 +353,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-pattern"></div>
-  <div class="hero-content">
-    <img src="logo.jpeg" alt="Luna Styles" class="hero-logo-mobile">
+  <div class="hero-left">
     <p class="hero-eyebrow">✦ Handmade Kantha Wearable Art ✦</p>
     <h1 class="hero-title">
       Color.<br>
@@ -1226,46 +368,34 @@
       <a href="https://whatnot.com/s/gisSG3Fk" target="_blank" class="btn btn-outline">Watch Live on Whatnot</a>
     </div>
   </div>
-  <div class="hero-visual">
-    <div class="hero-ring"></div>
-    <div class="hero-ring"></div>
-    <div class="hero-ring"></div>
-    <img src="logo.jpeg" alt="Luna Styles" class="hero-logo-giant">
+  <div class="hero-right">
+    <div class="hero-logo-wrap">
+      <img src="logo.jpeg" alt="Luna Styles">
+    </div>
   </div>
-  <!-- Mobile hero logo -->
-  <style>
-    .hero-logo-mobile { display: none; }
-    @media (max-width: 768px) {
-      .hero-logo-mobile { display: block; width: 160px; margin: 0 auto 1.5rem; filter: drop-shadow(0 0 30px rgba(232,131,26,0.7)); animation: float 6s ease-in-out infinite; }
-    }
-  </style>
 </section>
 
-<div class="logo-divider"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"></div>
+<div class="kantha-stripe"></div>
 
 <!-- LIVE SHOWS -->
-<section class="shows-section" id="shows">
-  <img src="logo.jpeg" class="section-watermark-logo shows-section" alt="" aria-hidden="true" style="position:absolute;top:-50px;right:-50px;width:420px;height:420px;opacity:0.05;pointer-events:none;">
+<section class="shows-section floral-bg" id="shows">
   <div class="shows-container reveal">
     <p class="section-label">✦ Join Us Live ✦</p>
-    <h2 class="section-title"><img src="logo.jpeg" class="section-logo-stamp" alt="">Live <em>Kantha Shows</em><img src="logo.jpeg" class="section-logo-stamp" alt=""></h2>
-    <div class="live-badge">
-      <span class="live-dot"></span>
-      Streaming on Whatnot
-    </div>
-    <p style="color:rgba(250,243,224,0.65); font-size:1.1rem; max-width:600px; margin:0 auto;">
+    <h2 class="section-title section-title-light">Live <em>Kantha Shows</em></h2>
+    <div class="live-badge"><span class="live-dot"></span>Streaming on Whatnot</div>
+    <p style="color:rgba(255,255,255,.7);font-size:1.1rem;max-width:600px;margin:0 auto;">
       Join Maggie live twice a week for one-of-a-kind kantha drops — shop in real time, ask questions, and find your next favorite piece before it's gone.
     </p>
     <div class="show-cards">
       <div class="show-card">
         <div class="show-day">Wednesday</div>
-        <div class="show-time">6:30 PM PST  ·  Every Week</div>
+        <div class="show-time">6:30 PM PST · Every Week</div>
         <p class="show-desc">New arrivals, exclusive drops, and handpicked kantha pieces you won't find twice. Don't miss out!</p>
         <a href="https://whatnot.com/s/gisSG3Fk" target="_blank" class="btn-whatnot">Watch on Whatnot</a>
       </div>
       <div class="show-card">
         <div class="show-day">Friday</div>
-        <div class="show-time">6:30 PM PST  ·  Every Week</div>
+        <div class="show-time">6:30 PM PST · Every Week</div>
         <p class="show-desc">End the week right — bucket hats, kimonos, reversible tops, totes, and so much more live for auction.</p>
         <a href="https://whatnot.com/s/gisSG3Fk" target="_blank" class="btn-whatnot">Watch on Whatnot</a>
       </div>
@@ -1273,25 +403,35 @@
   </div>
 </section>
 
-<div class="logo-divider"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"></div>
+<!-- LOGO DIVIDER -->
+<div class="logo-divider">
+  <div class="logo-circle"><img src="logo.jpeg" alt="✦"></div>
+  <div class="logo-circle"><img src="logo.jpeg" alt="✦"></div>
+  <div class="logo-circle"><img src="logo.jpeg" alt="✦"></div>
+</div>
 
 <!-- VIDEO -->
-<section class="video-section" id="watch">
+<section class="video-section floral-light" id="watch">
   <div class="video-container reveal">
     <p class="section-label">✦ Behind the Craft ✦</p>
     <h2 class="section-title">Watch <em>Maggie Make</em></h2>
-    <p style="font-size:1.1rem; color:rgba(43,24,16,0.7); max-width:580px; margin:0.5rem auto 0;">
+    <p style="font-size:1.1rem;color:rgba(26,5,0,.7);max-width:580px;margin:.5rem auto 0;">
       A little chaos, a lot of color, and all the love — handmaking reversible kantha bucket hats, one stitch at a time.
     </p>
     <div class="video-wrapper">
-      <video controls playsinline>
+      <video id="mainVideo" controls playsinline preload="metadata" style="width:100%;display:block;max-height:75vh;background:#000;">
         <source src="reel.mp4" type="video/mp4">
+        <source src="reel.mp4" type="video/quicktime">
+        <p style="color:white;padding:2rem;">Your browser doesn't support this video. <a href="reel.mp4" style="color:#FF7A00;">Download to watch</a></p>
       </video>
     </div>
+    <p style="margin-top:1.5rem;font-size:.9rem;color:rgba(26,5,0,.5);font-family:'Josefin Sans',sans-serif;letter-spacing:.1em;">
+      Video not playing? <a href="reel.mp4" style="color:var(--fuchsia);text-decoration:none;" download>Download the video</a> or watch on <a href="https://www.instagram.com/reel/DYk7c_kSdFs/" target="_blank" style="color:var(--fuchsia);text-decoration:none;">Instagram →</a>
+    </p>
   </div>
 </section>
 
-<div class="logo-divider"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"></div>
+<div class="kantha-stripe"></div>
 
 <!-- SHOP -->
 <section class="shop-section" id="shop">
@@ -1299,7 +439,7 @@
     <div class="shop-header reveal">
       <div>
         <p class="section-label">✦ Etsy Shop ✦</p>
-        <h2 class="section-title"><img src="logo.jpeg" class="section-logo-stamp" alt="">The <em>Collection</em><img src="logo.jpeg" class="section-logo-stamp" alt=""></h2>
+        <h2 class="section-title">The <em>Collection</em></h2>
       </div>
       <a href="https://www.etsy.com/shop/LunaStyles2026Shop" target="_blank" class="btn btn-primary">View Full Shop</a>
     </div>
@@ -1307,23 +447,76 @@
   </div>
 </section>
 
-<div class="logo-divider"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"></div>
+<!-- LOGO DIVIDER -->
+<div class="logo-divider">
+  <div class="logo-circle"><img src="logo.jpeg" alt="✦"></div>
+  <div class="logo-circle"><img src="logo.jpeg" alt="✦"></div>
+  <div class="logo-circle"><img src="logo.jpeg" alt="✦"></div>
+</div>
 
 <!-- INSTAGRAM -->
-<section class="instagram-section" id="instagram">
+<section class="instagram-section floral-light" id="instagram">
   <div class="insta-container">
-    <div class="reveal" style="text-align:center; margin-bottom:0;">
+    <div class="insta-intro reveal">
       <p class="section-label">✦ Follow Along ✦</p>
       <h2 class="section-title">From the <em>Feed</em></h2>
-      <p style="color:rgba(250,243,224,0.65); font-size:1.05rem; max-width:500px; margin:0 auto;">
+      <p style="color:rgba(26,5,0,.65);font-size:1.05rem;max-width:520px;margin:.5rem auto 0;">
         Real pieces, real vibes — see what Maggie's been making and wearing lately.
       </p>
     </div>
-    <div class="insta-grid reveal" id="instaGrid"></div>
+
+    <div class="insta-embed-grid reveal" id="instaGrid">
+
+      <!-- Post 1: Reel -->
+      <div class="insta-embed-wrap">
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/reel/DYk7c_kSdFs/"
+          data-instgrm-version="14"
+          style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0;padding:0;width:100%;">
+        </blockquote>
+      </div>
+
+      <!-- Post 2 -->
+      <div class="insta-embed-wrap">
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/DYi0b79yRI9/"
+          data-instgrm-version="14"
+          style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0;padding:0;width:100%;">
+        </blockquote>
+      </div>
+
+      <!-- Post 3 -->
+      <div class="insta-embed-wrap">
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/DYeINZKFVwM/"
+          data-instgrm-version="14"
+          style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0;padding:0;width:100%;">
+        </blockquote>
+      </div>
+
+      <!-- Post 4 -->
+      <div class="insta-embed-wrap">
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/DZByysEy0Sb/"
+          data-instgrm-version="14"
+          style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0;padding:0;width:100%;">
+        </blockquote>
+      </div>
+
+    </div>
+
+    <div class="insta-follow-btn reveal">
+      <a href="https://www.instagram.com/lunastyles2026" target="_blank" class="btn btn-primary" style="font-size:.85rem;">
+        Follow @lunastyles2026 on Instagram
+      </a>
+    </div>
   </div>
 </section>
 
-<div class="logo-divider"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"></div>
+<!-- Instagram embed script -->
+<script async src="//www.instagram.com/embed.js"></script>
+
+<div class="kantha-stripe"></div>
 
 <!-- ABOUT -->
 <section class="about-section" id="about">
@@ -1338,46 +531,35 @@
     <div class="about-text reveal">
       <p class="section-label">✦ The Story ✦</p>
       <h2 class="section-title">Hi, I'm <em>Maggie</em></h2>
-      <p>
-        Welcome to <strong>Luna Styles</strong> — a small shop built on big color, sustainable fashion, and the belief that what you wear should feel like <em>you</em>.
-      </p>
-      <p>
-        I curate one-of-a-kind <strong>kantha pieces</strong> full of texture and soul — from wearable art to everyday statement pieces. Alongside my curated finds, I also handcraft select items myself, including <strong>reversible bucket hats</strong> and handmade tote bags sewn with love.
-      </p>
-      <p>
-        Every piece is unique. Every purchase supports a small, woman-owned, handmade business. Expect cozy boho vibes, <strong>sustainable fashion</strong>, vibrant prints, and pieces you won't find twice.
-      </p>
+      <p>Welcome to <strong>Luna Styles</strong> — a small shop built on big color, sustainable fashion, and the belief that what you wear should feel like <em>you</em>.</p>
+      <p>I curate one-of-a-kind <strong>kantha pieces</strong> full of texture and soul — from wearable art to everyday statement pieces. Alongside my curated finds, I also handcraft select items myself, including <strong>reversible bucket hats</strong> and handmade tote bags sewn with love.</p>
+      <p>Every piece is unique. Every purchase supports a small, woman-owned, handmade business. Expect cozy boho vibes, <strong>sustainable fashion</strong>, vibrant prints, and pieces you won't find twice.</p>
       <div class="about-stats">
-        <div class="stat-item">
-          <span class="stat-number">5.0 ⭐</span>
-          <span class="stat-label">Rating</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">&lt;1d</span>
-          <span class="stat-label">Avg Ship</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">40+</span>
-          <span class="stat-label">Listings</span>
-        </div>
+        <div class="stat-item"><span class="stat-number">5.0 ⭐</span><span class="stat-label">Rating</span></div>
+        <div class="stat-item"><span class="stat-number">&lt;1d</span><span class="stat-label">Avg Ship</span></div>
+        <div class="stat-item"><span class="stat-number">40+</span><span class="stat-label">Listings</span></div>
       </div>
-      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
         <a href="https://www.etsy.com/shop/LunaStyles2026Shop" target="_blank" class="btn btn-primary">Shop on Etsy</a>
-        <a href="https://www.instagram.com/lunastyles2026" target="_blank" class="btn btn-outline" style="color:var(--deep-brown); border-color:rgba(43,24,16,0.3);">Follow on Instagram</a>
+        <a href="https://www.instagram.com/lunastyles2026" target="_blank" class="btn btn-primary" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);">Follow on Instagram</a>
       </div>
     </div>
   </div>
 </section>
 
-<div class="logo-divider"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"></div>
+<!-- LOGO DIVIDER -->
+<div class="logo-divider">
+  <div class="logo-circle"><img src="logo.jpeg" alt="✦"></div>
+  <div class="logo-circle"><img src="logo.jpeg" alt="✦"></div>
+  <div class="logo-circle"><img src="logo.jpeg" alt="✦"></div>
+</div>
 
 <!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <img src="logo.jpeg" class="section-watermark-logo" alt="" aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:520px;height:520px;opacity:0.05;pointer-events:none;">
+<section class="contact-section floral-bg" id="contact">
   <div class="contact-container">
     <p class="section-label">✦ Get In Touch ✦</p>
-    <h2 class="section-title">Say <em>Hello</em></h2>
-    <p style="color:rgba(250,243,224,0.6); font-size:1.05rem; max-width:500px; margin:0.5rem auto 0;">
+    <h2 class="section-title section-title-light">Say <em>Hello</em></h2>
+    <p style="color:rgba(255,255,255,.65);font-size:1.05rem;max-width:500px;margin:.5rem auto 0;">
       Questions about an item, custom orders, or just want to chat kantha? We'd love to hear from you.
     </p>
     <form class="contact-form reveal" id="contactForm">
@@ -1410,29 +592,30 @@
         <label for="message">Message</label>
         <textarea id="message" placeholder="Tell me what's on your mind..." required></textarea>
       </div>
-      <div class="form-submit">
+      <div style="text-align:center;margin-top:.5rem;">
         <button type="submit" class="btn-submit">Send Message ✦</button>
       </div>
     </form>
     <div class="form-success" id="formSuccess">
       <h3>Message Sent! ✦</h3>
-      <p style="color:rgba(250,243,224,0.65);">Thanks for reaching out. Maggie will get back to you soon!</p>
+      <p style="color:rgba(255,255,255,.65);">Thanks for reaching out. Maggie will get back to you soon!</p>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<div class="kantha-divider"></div>
+<div class="kantha-stripe"></div>
 <footer>
   <div class="footer-inner">
-    <!-- Big centered logo above footer -->
-    <div style="text-align:center; padding: 1rem 0 2.5rem; border-bottom: 1px solid rgba(232,131,26,0.15); margin-bottom:2rem;">
-      <img src="logo.jpeg" alt="Luna Styles" class="footer-logo-center">
-      <p style="font-family:'Josefin Sans',sans-serif; font-size:0.7rem; letter-spacing:0.3em; text-transform:uppercase; color:rgba(250,243,224,0.35);">Handmade with love · Since 2026</p>
+    <div class="footer-logo-row">
+      <div class="logo-circle">
+        <img src="logo.jpeg" alt="Luna Styles">
+      </div>
+      <p class="footer-tagline">Handmade with love · Since 2026</p>
     </div>
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="logo.jpeg" alt="Luna Styles Logo" style="width:70px;margin-bottom:0.75rem;filter:drop-shadow(0 0 10px rgba(232,131,26,0.4));">
+        <div class="logo-circle"><img src="logo.jpeg" alt="Luna Styles"></div>
         <p>Handmade kantha wearable art. One-of-a-kind pieces made with color, soul, and sustainability in mind.</p>
       </div>
       <div class="footer-col">
@@ -1460,100 +643,48 @@
 </footer>
 
 <script>
-// ---- PRODUCT DATA ----
+// ---- PRODUCTS ----
 const products = [
-  { url: "https://www.etsy.com/listing/4515559786/reversible-midi-wrap-skirt-upcycled-sari", img: "https://i.etsystatic.com/65615339/r/il/b49e44/8091633156/il_340x270.8091633156_9qk7.jpg", name: "Reversible Midi Wrap Skirt — Upcycled Sari Kantha", tag: "Skirts" },
-  { url: "https://www.etsy.com/listing/4515558998/reversible-midi-wrap-skirt-upcycled-sari", img: "https://i.etsystatic.com/65615339/r/il/710ba0/8091627812/il_340x270.8091627812_jkfg.jpg", name: "Reversible Midi Wrap Skirt — Upcycled Sari Kantha", tag: "Skirts" },
-  { url: "https://www.etsy.com/listing/4514931672/handmade-kantha-tie-side-top-one-size", img: "https://i.etsystatic.com/65615339/r/il/d5df27/8087205370/il_340x270.8087205370_3289.jpg", name: "Handmade Kantha Tie-Side Top — One Size", tag: "Tops" },
-  { url: "https://www.etsy.com/listing/4514795032/boho-high-low-sundress-adjustable-tie", img: "https://i.etsystatic.com/65615339/r/il/12141f/8134202599/il_340x270.8134202599_g63m.jpg", name: "Boho High-Low Sundress — Adjustable Tie", tag: "Dresses" },
-  { url: "https://www.etsy.com/listing/4514002057/orange-hi-low-dress-boho-festival-dress", img: "https://i.etsystatic.com/65615339/r/il/ed7148/8080500440/il_340x270.8080500440_aov7.jpg", name: "Orange Hi-Low Dress — Boho Festival Dress", tag: "Dresses" },
-  { url: "https://www.etsy.com/listing/4511397906/matching-handmade-boho-hats-mommy-and-me", img: "https://i.etsystatic.com/65615339/r/il/77438a/8062055740/il_340x270.8062055740_t0qh.jpg", name: "Matching Handmade Boho Hats — Mommy & Me", tag: "Hats" },
-  { url: "https://www.etsy.com/listing/4510262094/handmade-kantha-headband", img: "https://i.etsystatic.com/65615339/r/il/8f8875/8053793094/il_340x270.8053793094_h4sy.jpg", name: "Handmade Kantha Headband", tag: "Accessories" },
-  { url: "https://www.etsy.com/listing/4509430868/handmade-kantha-tote-bag-upcycled", img: "https://i.etsystatic.com/65615339/r/il/d2ba33/8095777197/il_340x270.8095777197_py61.jpg", name: "Handmade Kantha Tote Bag — Upcycled", tag: "Bags" },
-  { url: "https://www.etsy.com/listing/4497592226/reversible-kantha-bucket-hat-handmade", img: "https://i.etsystatic.com/65615339/r/il/4ed94b/7971288860/il_340x270.7971288860_dtzy.jpg", name: "Reversible Kantha Bucket Hat — Handmade", tag: "Hats" },
-  { url: "https://www.etsy.com/listing/4500084791/reversible-kantha-bucket-hat-handmade", img: "https://i.etsystatic.com/65615339/r/il/371df2/7988191482/il_340x270.7988191482_hwoc.jpg", name: "Reversible Kantha Bucket Hat — Handmade", tag: "Hats" },
-  { url: "https://www.etsy.com/listing/4502150578/kantha-kimono-jacket-vintage-cotton", img: "https://i.etsystatic.com/65615339/r/il/4bd3ee/8049479007/il_340x270.8049479007_gb93.jpg", name: "Kantha Kimono Jacket — Vintage Cotton", tag: "Jackets" },
-  { url: "https://www.etsy.com/listing/4505959666/black-wrap-pants-adjustable-wide-leg", img: "https://i.etsystatic.com/65615339/r/il/4e52dd/8072811559/il_340x270.8072811559_1ca5.jpg", name: "Black Wrap Pants — Adjustable Wide Leg", tag: "Pants" },
-  { url: "https://www.etsy.com/listing/4505136666/reversible-mini-wrap-skirt-upcycled-sari", img: "https://i.etsystatic.com/65615339/r/il/978bab/8019683020/il_340x270.8019683020_muvc.jpg", name: "Reversible Mini Wrap Skirt — Upcycled Sari", tag: "Skirts" },
-  { url: "https://www.etsy.com/listing/4502721707/kantha-shorts-one-size-fits-most-boho", img: "https://i.etsystatic.com/65615339/r/il/53f70f/8053127583/il_340x270.8053127583_kmto.jpg", name: "Kantha Shorts — One Size Fits Most, Boho", tag: "Shorts" },
-  { url: "https://www.etsy.com/listing/4507549271/boho-kantha-headwrap-handmade-head-scarf", img: "https://i.etsystatic.com/8035303970/r/il/aa63d6/8035303970/il_170x135.8035303970_rupq.jpg", name: "Boho Kantha Head Wrap — Handmade Head Scarf", tag: "Accessories" },
-  { url: "https://www.etsy.com/listing/4504621181/handmade-kantha-tote-bag-upcycled", img: "https://i.etsystatic.com/65615339/r/il/46fd08/8064439159/il_340x270.8064439159_irfn.jpg", name: "Handmade Kantha Tote Bag — Upcycled", tag: "Bags" },
+  { url:"https://www.etsy.com/listing/4515559786/reversible-midi-wrap-skirt-upcycled-sari",img:"https://i.etsystatic.com/65615339/r/il/b49e44/8091633156/il_340x270.8091633156_9qk7.jpg",name:"Reversible Midi Wrap Skirt — Upcycled Sari Kantha",tag:"Skirts"},
+  { url:"https://www.etsy.com/listing/4515558998/reversible-midi-wrap-skirt-upcycled-sari",img:"https://i.etsystatic.com/65615339/r/il/710ba0/8091627812/il_340x270.8091627812_jkfg.jpg",name:"Reversible Midi Wrap Skirt — Upcycled Sari Kantha",tag:"Skirts"},
+  { url:"https://www.etsy.com/listing/4515560193/reversible-midi-wrap-skirt-upcycled-sari",img:"https://i.etsystatic.com/65615339/r/il/eccf23/8091619970/il_340x270.8091619970_6avz.jpg",name:"Reversible Midi Wrap Skirt — Upcycled Sari Kantha",tag:"Skirts"},
+  { url:"https://www.etsy.com/listing/4514931672/handmade-kantha-tie-side-top-one-size",img:"https://i.etsystatic.com/65615339/r/il/d5df27/8087205370/il_340x270.8087205370_3289.jpg",name:"Handmade Kantha Tie-Side Top — One Size",tag:"Tops"},
+  { url:"https://www.etsy.com/listing/4514795032/boho-high-low-sundress-adjustable-tie",img:"https://i.etsystatic.com/65615339/r/il/12141f/8134202599/il_340x270.8134202599_g63m.jpg",name:"Boho High-Low Sundress — Adjustable Tie",tag:"Dresses"},
+  { url:"https://www.etsy.com/listing/4514002057/orange-hi-low-dress-boho-festival-dress",img:"https://i.etsystatic.com/65615339/r/il/ed7148/8080500440/il_340x270.8080500440_aov7.jpg",name:"Orange Hi-Low Dress — Boho Festival Dress",tag:"Dresses"},
+  { url:"https://www.etsy.com/listing/4511397906/matching-handmade-boho-hats-mommy-and-me",img:"https://i.etsystatic.com/65615339/r/il/77438a/8062055740/il_340x270.8062055740_t0qh.jpg",name:"Matching Handmade Boho Hats — Mommy & Me",tag:"Hats"},
+  { url:"https://www.etsy.com/listing/4510262094/handmade-kantha-headband",img:"https://i.etsystatic.com/65615339/r/il/8f8875/8053793094/il_340x270.8053793094_h4sy.jpg",name:"Handmade Kantha Headband",tag:"Accessories"},
+  { url:"https://www.etsy.com/listing/4509430868/handmade-kantha-tote-bag-upcycled",img:"https://i.etsystatic.com/65615339/r/il/d2ba33/8095777197/il_340x270.8095777197_py61.jpg",name:"Handmade Kantha Tote Bag — Upcycled",tag:"Bags"},
+  { url:"https://www.etsy.com/listing/4506916505/reversible-midi-wrap-skirt-upcycled-sari",img:"https://i.etsystatic.com/65615339/r/il/6f255b/8079152113/il_340x270.8079152113_1zz3.jpg",name:"Reversible Midi Wrap Skirt — Upcycled Sari",tag:"Skirts"},
+  { url:"https://www.etsy.com/listing/4502150578/kantha-kimono-jacket-vintage-cotton",img:"https://i.etsystatic.com/65615339/r/il/4bd3ee/8049479007/il_340x270.8049479007_gb93.jpg",name:"Kantha Kimono Jacket — Vintage Cotton",tag:"Jackets"},
+  { url:"https://www.etsy.com/listing/4505962616/plus-size-black-wrap-pants-adjustable",img:"https://i.etsystatic.com/65615339/r/il/1a4e7e/8024911352/il_340x270.8024911352_3yc4.jpg",name:"Plus Size Black Wrap Pants — Adjustable",tag:"Pants"},
+  { url:"https://www.etsy.com/listing/4497592226/reversible-kantha-bucket-hat-handmade",img:"https://i.etsystatic.com/65615339/r/il/4ed94b/7971288860/il_340x270.7971288860_dtzy.jpg",name:"Reversible Kantha Bucket Hat — Handmade",tag:"Hats"},
+  { url:"https://www.etsy.com/listing/4500084791/reversible-kantha-bucket-hat-handmade",img:"https://i.etsystatic.com/65615339/r/il/371df2/7988191482/il_340x270.7988191482_hwoc.jpg",name:"Reversible Kantha Bucket Hat — Handmade",tag:"Hats"},
+  { url:"https://www.etsy.com/listing/4505136666/reversible-mini-wrap-skirt-upcycled-sari",img:"https://i.etsystatic.com/65615339/r/il/978bab/8019683020/il_340x270.8019683020_muvc.jpg",name:"Reversible Mini Wrap Skirt — Upcycled Sari",tag:"Skirts"},
+  { url:"https://www.etsy.com/listing/4502721707/kantha-shorts-one-size-fits-most-boho",img:"https://i.etsystatic.com/65615339/r/il/53f70f/8053127583/il_340x270.8053127583_kmto.jpg",name:"Kantha Shorts — One Size Fits Most, Boho",tag:"Shorts"},
+  { url:"https://www.etsy.com/listing/4504621181/handmade-kantha-tote-bag-upcycled",img:"https://i.etsystatic.com/65615339/r/il/46fd08/8064439159/il_340x270.8064439159_irfn.jpg",name:"Handmade Kantha Tote Bag — Upcycled",tag:"Bags"},
+  { url:"https://www.etsy.com/listing/4502627628/reversible-kantha-top-one-size-fits-most",img:"https://i.etsystatic.com/65615339/r/il/7f7970/8004668772/il_340x270.8004668772_fqrs.jpg",name:"Reversible Kantha Top — One Size Fits Most",tag:"Tops"},
+  { url:"https://www.etsy.com/listing/4507549271/boho-kantha-headwrap-handmade-head-scarf",img:"https://i.etsystatic.com/8035303970/r/il/aa63d6/8035303970/il_170x135.8035303970_rupq.jpg",name:"Boho Kantha Head Wrap — Handmade",tag:"Accessories"},
+  { url:"https://www.etsy.com/listing/4512509365/plus-size-reversible-mini-wrap-skirt",img:"https://i.etsystatic.com/65615339/r/il/bf8dfa/8069860832/il_340x270.8069860832_ickf.jpg",name:"Plus Size Reversible Mini Wrap Skirt",tag:"Skirts"},
 ];
 
-// Render products
 const grid = document.getElementById('productGrid');
-products.forEach((p, i) => {
+products.forEach((p,i) => {
   const card = document.createElement('a');
-  card.href = p.url;
-  card.target = '_blank';
-  card.rel = 'noopener noreferrer';
+  card.href = p.url; card.target='_blank'; card.rel='noopener noreferrer';
   card.className = 'product-card reveal';
-  card.style.animationDelay = `${i * 0.06}s`;
   card.innerHTML = `
-    <img class="product-img" src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.background='#e8d5b0';this.src=''">
+    <img class="product-img" src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.background='#ffe0f0'">
     <div class="product-info">
       <div class="product-name">${p.name}</div>
       <span class="product-tag">${p.tag}</span>
-    </div>
-  `;
+    </div>`;
   grid.appendChild(card);
 });
 
-// ---- INSTAGRAM POSTS ----
-const instaData = [
-  {
-    url: "https://www.instagram.com/reel/DYk7c_kSdFs/",
-    label: "Latest Reel",
-    thumb: "https://i.etsystatic.com/65615339/r/il/77438a/8062055740/il_340x270.8062055740_t0qh.jpg"
-  },
-  {
-    url: "https://www.instagram.com/p/DYi0b79yRI9/",
-    label: "Recent Post",
-    thumb: "https://i.etsystatic.com/65615339/r/il/4ed94b/7971288860/il_340x270.7971288860_dtzy.jpg"
-  },
-  {
-    url: "https://www.instagram.com/p/DYeINZKFVwM/",
-    label: "Recent Post",
-    thumb: "https://i.etsystatic.com/65615339/r/il/d2ba33/8095777197/il_340x270.8095777197_py61.jpg"
-  },
-  {
-    url: "https://www.instagram.com/p/DZByysEy0Sb/",
-    label: "Recent Post",
-    thumb: "https://i.etsystatic.com/65615339/r/il/b49e44/8091633156/il_340x270.8091633156_9qk7.jpg"
-  },
-];
-
-const instaGrid = document.getElementById('instaGrid');
-instaData.forEach(post => {
-  const card = document.createElement('a');
-  card.href = post.url;
-  card.target = '_blank';
-  card.rel = 'noopener noreferrer';
-  card.className = 'insta-card reveal';
-  card.innerHTML = `
-    <img class="insta-thumb" src="${post.thumb}" alt="${post.label}" loading="lazy">
-    <div class="insta-overlay">
-      <span class="insta-label">View on Instagram →</span>
-    </div>
-    <div class="insta-bottom">
-      <svg class="insta-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-      </svg>
-      <span class="insta-handle">@lunastyles2026</span>
-    </div>
-  `;
-  instaGrid.appendChild(card);
-});
-
 // ---- SCROLL REVEAL ----
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(el => {
-    if (el.isIntersecting) {
-      el.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
-
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(el => { if(el.isIntersecting) el.target.classList.add('visible'); });
+}, { threshold:0.08 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // ---- CONTACT FORM ----
@@ -1563,12 +694,17 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   const email = document.getElementById('email').value;
   const subject = document.getElementById('subject').value;
   const message = document.getElementById('message').value;
+  window.location.href = `mailto:lunastyles2026@gmail.com?subject=${encodeURIComponent(subject||'Message from Luna Styles Website')}&body=${encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+message)}`;
+  this.style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+});
 
-  const mailtoLink = `mailto:lunastyles2026@gmail.com?subject=${encodeURIComponent(subject || 'Message from Luna Styles Website')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
-  window.location.href = mailtoLink;
-
-  this.style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
+// ---- INSTAGRAM EMBED RELOAD ----
+// Re-process embeds after load
+window.addEventListener('load', function() {
+  if (window.instgrm) {
+    window.instgrm.Embeds.process();
+  }
 });
 </script>
 </body>
