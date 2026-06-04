@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Luna Styles — Handmade Kantha Wearable Art</title>
+<link rel="icon" type="image/jpeg" href="logo.jpeg">
+<link rel="apple-touch-icon" href="logo.jpeg">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -28,6 +30,94 @@
     background: var(--cream);
     color: var(--deep-brown);
     overflow-x: hidden;
+  }
+
+
+  /* ===== LOGO WATERMARK / STAMPS ===== */
+  .logo-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    background: var(--deep-brown);
+    position: relative;
+    overflow: hidden;
+  }
+  .logo-divider::before, .logo-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(232,131,26,0.4), transparent);
+    max-width: 400px;
+  }
+  .logo-divider img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 12px rgba(232,131,26,0.7));
+    animation: spinSlow 20s linear infinite;
+  }
+  @keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .section-logo-stamp {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    opacity: 0.18;
+    filter: sepia(1) saturate(3) hue-rotate(-10deg);
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.75rem;
+  }
+
+  .hero-logo-center {
+    display: block;
+    width: min(320px, 70%);
+    margin: 0 auto 2rem;
+    filter: drop-shadow(0 0 50px rgba(232,131,26,0.5)) drop-shadow(0 0 100px rgba(196,43,43,0.25));
+    animation: float 6s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
+  }
+  @keyframes glowPulse {
+    0%, 100% { filter: drop-shadow(0 0 40px rgba(232,131,26,0.45)) drop-shadow(0 0 80px rgba(196,43,43,0.2)); }
+    50% { filter: drop-shadow(0 0 70px rgba(232,131,26,0.75)) drop-shadow(0 0 120px rgba(196,43,43,0.4)); }
+  }
+
+  .footer-logo-center {
+    display: block;
+    width: 130px;
+    margin: 0 auto 1.5rem;
+    filter: drop-shadow(0 0 20px rgba(232,131,26,0.5));
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .section-watermark-logo {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
+  .contact-section .section-watermark-logo {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.05;
+    width: 500px;
+    height: 500px;
+  }
+
+  .shows-section .section-watermark-logo {
+    top: -50px;
+    right: -50px;
+    opacity: 0.05;
+    width: 400px;
+    height: 400px;
   }
 
   /* ===== KANTHA PATTERN SVG BACKGROUNDS ===== */
@@ -65,15 +155,19 @@
   }
 
   .nav-logo img {
-    width: 52px;
-    height: 52px;
+    width: 72px;
+    height: 72px;
     object-fit: contain;
-    filter: drop-shadow(0 0 8px rgba(232,131,26,0.6));
+    filter: drop-shadow(0 0 14px rgba(232,131,26,0.9)) drop-shadow(0 0 5px rgba(196,43,43,0.5));
+    transition: transform 0.35s, filter 0.35s;
   }
-
+  .nav-logo img:hover {
+    transform: scale(1.1) rotate(-4deg);
+    filter: drop-shadow(0 0 22px rgba(232,131,26,1)) drop-shadow(0 0 10px rgba(196,43,43,0.8));
+  }
   .nav-logo span {
     font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
+    font-size: 1.55rem;
     color: var(--cream);
     letter-spacing: 0.05em;
   }
@@ -1100,7 +1194,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <img src="/mnt/user-data/uploads/logo.jpeg" alt="Luna Styles">
+    <img src="logo.jpeg" alt="Luna Styles">
     <span>Luna Styles</span>
   </div>
   <ul class="nav-links">
@@ -1117,6 +1211,7 @@
 <section class="hero">
   <div class="hero-pattern"></div>
   <div class="hero-content">
+    <img src="logo.jpeg" alt="Luna Styles" class="hero-logo-mobile">
     <p class="hero-eyebrow">✦ Handmade Kantha Wearable Art ✦</p>
     <h1 class="hero-title">
       Color.<br>
@@ -1135,17 +1230,25 @@
     <div class="hero-ring"></div>
     <div class="hero-ring"></div>
     <div class="hero-ring"></div>
-    <img src="/mnt/user-data/uploads/logo.jpeg" alt="Luna Styles" class="hero-logo-giant">
+    <img src="logo.jpeg" alt="Luna Styles" class="hero-logo-giant">
   </div>
+  <!-- Mobile hero logo -->
+  <style>
+    .hero-logo-mobile { display: none; }
+    @media (max-width: 768px) {
+      .hero-logo-mobile { display: block; width: 160px; margin: 0 auto 1.5rem; filter: drop-shadow(0 0 30px rgba(232,131,26,0.7)); animation: float 6s ease-in-out infinite; }
+    }
+  </style>
 </section>
 
-<div class="kantha-divider"></div>
+<div class="logo-divider"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"></div>
 
 <!-- LIVE SHOWS -->
 <section class="shows-section" id="shows">
+  <img src="logo.jpeg" class="section-watermark-logo shows-section" alt="" aria-hidden="true" style="position:absolute;top:-50px;right:-50px;width:420px;height:420px;opacity:0.05;pointer-events:none;">
   <div class="shows-container reveal">
     <p class="section-label">✦ Join Us Live ✦</p>
-    <h2 class="section-title">Live <em>Kantha Shows</em></h2>
+    <h2 class="section-title"><img src="logo.jpeg" class="section-logo-stamp" alt="">Live <em>Kantha Shows</em><img src="logo.jpeg" class="section-logo-stamp" alt=""></h2>
     <div class="live-badge">
       <span class="live-dot"></span>
       Streaming on Whatnot
@@ -1170,7 +1273,7 @@
   </div>
 </section>
 
-<div class="kantha-divider"></div>
+<div class="logo-divider"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"></div>
 
 <!-- VIDEO -->
 <section class="video-section" id="watch">
@@ -1182,13 +1285,13 @@
     </p>
     <div class="video-wrapper">
       <video controls playsinline>
-        <source src="/mnt/user-data/uploads/Can_t_get_enough_of_that_touch___Handmaking_bucket_hats_with_a_little_chaos__color__and_confide.mp4" type="video/mp4">
+        <source src="reel.mp4" type="video/mp4">
       </video>
     </div>
   </div>
 </section>
 
-<div class="kantha-divider"></div>
+<div class="logo-divider"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"></div>
 
 <!-- SHOP -->
 <section class="shop-section" id="shop">
@@ -1196,7 +1299,7 @@
     <div class="shop-header reveal">
       <div>
         <p class="section-label">✦ Etsy Shop ✦</p>
-        <h2 class="section-title">The <em>Collection</em></h2>
+        <h2 class="section-title"><img src="logo.jpeg" class="section-logo-stamp" alt="">The <em>Collection</em><img src="logo.jpeg" class="section-logo-stamp" alt=""></h2>
       </div>
       <a href="https://www.etsy.com/shop/LunaStyles2026Shop" target="_blank" class="btn btn-primary">View Full Shop</a>
     </div>
@@ -1204,7 +1307,7 @@
   </div>
 </section>
 
-<div class="kantha-divider"></div>
+<div class="logo-divider"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"></div>
 
 <!-- INSTAGRAM -->
 <section class="instagram-section" id="instagram">
@@ -1220,13 +1323,13 @@
   </div>
 </section>
 
-<div class="kantha-divider"></div>
+<div class="logo-divider"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"></div>
 
 <!-- ABOUT -->
 <section class="about-section" id="about">
   <div class="about-container">
     <div class="about-image-wrap reveal">
-      <img src="/mnt/user-data/uploads/Maggie_Selfie_-_Owner_Founder.jpeg" alt="Maggie, Owner & Founder of Luna Styles" class="about-photo">
+      <img src="Maggie Selfie - Owner+Founder.jpeg" alt="Maggie, Owner & Founder of Luna Styles" class="about-photo">
       <div class="about-badge">
         <strong>Magaly Flores</strong>
         <span>Owner & Founder</span>
@@ -1266,10 +1369,11 @@
   </div>
 </section>
 
-<div class="kantha-divider"></div>
+<div class="logo-divider"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"><img src="logo.jpeg" alt="✦"></div>
 
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
+  <img src="logo.jpeg" class="section-watermark-logo" alt="" aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:520px;height:520px;opacity:0.05;pointer-events:none;">
   <div class="contact-container">
     <p class="section-label">✦ Get In Touch ✦</p>
     <h2 class="section-title">Say <em>Hello</em></h2>
@@ -1321,9 +1425,14 @@
 <div class="kantha-divider"></div>
 <footer>
   <div class="footer-inner">
+    <!-- Big centered logo above footer -->
+    <div style="text-align:center; padding: 1rem 0 2.5rem; border-bottom: 1px solid rgba(232,131,26,0.15); margin-bottom:2rem;">
+      <img src="logo.jpeg" alt="Luna Styles" class="footer-logo-center">
+      <p style="font-family:'Josefin Sans',sans-serif; font-size:0.7rem; letter-spacing:0.3em; text-transform:uppercase; color:rgba(250,243,224,0.35);">Handmade with love · Since 2026</p>
+    </div>
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="/mnt/user-data/uploads/logo.jpeg" alt="Luna Styles Logo">
+        <img src="logo.jpeg" alt="Luna Styles Logo" style="width:70px;margin-bottom:0.75rem;filter:drop-shadow(0 0 10px rgba(232,131,26,0.4));">
         <p>Handmade kantha wearable art. One-of-a-kind pieces made with color, soul, and sustainability in mind.</p>
       </div>
       <div class="footer-col">
