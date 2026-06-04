@@ -1,150 +1,1049 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luna Styles · Boho Kantha Boutique</title>
-<meta name="description" content="One-of-a-kind kantha pieces — wearable art, boho fashion, reversible bucket hats & handmade tote bags. Shop on Etsy or catch us live on Whatnot.">
-<link rel="icon" type="image/png" href="data:image/png;base64,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">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:#faf7f2;color:#221a0f;line-height:1.6;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luna Styles — Handcrafted Boutique</title>
+  <meta name="description" content="Handcrafted kantha quilts, wraps, and wearable art by Magaly. Shop now on Etsy." />
+  <link rel="canonical" href="https://lunastyles.org" />
 
-:root{
-  --sand:#faf7f2;--cream:#f4ede0;--warm:#e8d8c0;
-  --rust:#b84a18;--rust-dk:#8f3610;--rust-lt:#fdf0ea;
-  --gold:#c88a1a;--gold-lt:#fdf6e3;
-  --teal:#1e7a7a;--teal-lt:#e6f4f4;
-  --plum:#6b3461;--plum-lt:#f5eaf4;
-  --saffron:#d4880a;
-  --indigo:#354880;--indigo-lt:#eaecf8;
-  --bark:#2a1a0a;--text:#221a0f;--muted:#7a6045;
-  --r:14px;
-  --sh:0 2px 20px rgba(42,26,10,.08);
-  --sh-lg:0 8px 40px rgba(42,26,10,.14);
-  --sh-xl:0 16px 60px rgba(42,26,10,.20);
-}
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
 
-/* ── KEYFRAMES ── */
-@keyframes flow{0% {background-position:0% 50%}50% {background-position:100% 50%}100% {background-position:0% 50%}}
-@keyframes ticker{0% {transform:translateX(0)}100% {transform:translateX(-50%)}}
-@keyframes pulse{0%,100% {opacity:1;transform:scale(1)}50% {opacity:.35;transform:scale(.65)}}
-@keyframes float{0%,100% {transform:translateY(0)}50% {transform:translateY(-18px)}}
-@keyframes shimmer{0% {background-position:200% 0}100% {background-position:-200% 0}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-@keyframes glow{0%,100% {box-shadow:0 0 0 0 rgba(184,74,24,.4)}50% {box-shadow:0 0 0 10px rgba(184,74,24,0)}}
-@keyframes borderSpin{0% {background-position:0% 50%}50% {background-position:100% 50%}100% {background-position:0% 50%}}
-@keyframes orb1{0%,100% {transform:translate(0,0) scale(1)}33% {transform:translate(30px,-20px) scale(1.1)}66% {transform:translate(-20px,15px) scale(.9)}}
-@keyframes orb2{0%,100% {transform:translate(0,0) scale(1)}33% {transform:translate(-25px,20px) scale(.9)}66% {transform:translate(20px,-15px) scale(1.1)}}
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --bg:        #0d0c0b;
+      --bg2:       #131210;
+      --bg3:       #1a1815;
+      --border:    rgba(180,148,90,0.18);
+      --gold:      #c9a84c;
+      --gold-lt:   #e2c47a;
+      --rose:      #b0654a;
+      --cream:     #ede0cc;
+      --cream-dim: rgba(237,224,204,0.65);
+      --text:      #d8ccbc;
+      --text-dim:  rgba(216,204,188,0.55);
+      --font-head: 'Cinzel', serif;
+      --font-body: 'Cormorant Garamond', serif;
+      --font-ui:   'Raleway', sans-serif;
+      --radius:    4px;
+      --glow:      0 0 40px rgba(201,168,76,0.08);
+    }
 
-/* ── KANTHA BORDER ── */
-.kantha{height:5px;background:linear-gradient(90deg,var(--rust),var(--gold),var(--teal),var(--plum),var(--indigo),var(--saffron),var(--rust));background-size:400% 100%;animation:flow 7s ease infinite}
+    /* ─── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
 
-/* ── MARQUEE ── */
-.marquee-bar{background:var(--bark);overflow:hidden;white-space:nowrap;padding:9px 0}
-.marquee-track{display:inline-flex;animation:ticker 30s linear infinite}
-.marquee-track:hover{animation-play-state:paused}
-.marquee-item{display:inline-flex;align-items:center;gap:8px;padding:0 26px;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.78)}
-.marquee-dot{color:var(--gold);font-size:1rem}
-.marquee-item a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
+    /* ─── GRAIN OVERLAY ──────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 9999;
+      pointer-events: none;
+      opacity: .025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
 
-/* ── COUNTDOWN ── */
-#cd-bar{background:linear-gradient(90deg,#1a0a02 0%,#2a160a 100%);color:#fff;padding:9px 16px;display:flex;align-items:center;justify-content:center;gap:12px;position:relative;transition:background .5s;flex-wrap:wrap}
-#cd-bar.live{background:linear-gradient(90deg,var(--rust),var(--plum))}
-.cd-dot{width:7px;height:7px;border-radius:50%;background:#ff5252;flex-shrink:0;animation:pulse 1.4s ease-in-out infinite}
-.cd-text{font-size:.8rem;font-weight:500;display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
-.cd-cta{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);color:#fff;padding:4px 13px;border-radius:50px;font-size:.75rem;font-weight:600;cursor:pointer;transition:background .2s}
-.cd-cta:hover{background:rgba(255,255,255,.28)}
-.cd-close{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,.45);font-size:1rem;cursor:pointer;line-height:1}
-.cd-close:hover{color:#fff}
+    /* ─── MARQUEE BANNER ─────────────────────────────────── */
+    .marquee-bar {
+      background: var(--gold);
+      color: #0d0c0b;
+      font-family: var(--font-ui);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 7px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee-track span { padding: 0 2.5rem; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* ── HEADER ── */
-header{position:sticky;top:0;z-index:200;background:rgba(250,247,242,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--warm)}
-.hdr{max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;padding:0 clamp(16px,4vw,48px)}
-.logo{display:flex;align-items:center;gap:10px}
-.logo img{width:40px;height:40px;object-fit:contain;transition:transform .4s ease}
-.logo:hover img{transform:rotate(25deg) scale(1.1)}
-.logo-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--bark);letter-spacing:-.01em}
-.logo-name span{color:var(--rust)}
-nav.desk{display:flex;align-items:center;gap:clamp(10px,2vw,24px)}
-nav.desk a{font-size:.84rem;font-weight:500;color:var(--muted);position:relative;transition:color .2s}
-nav.desk a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1.5px;background:var(--rust);transform:scaleX(0);transition:transform .22s;border-radius:2px;transform-origin:left}
-nav.desk a:hover{color:var(--rust)}
-nav.desk a:hover::after{transform:scaleX(1)}
-.nav-cta{background:var(--rust);color:#fff!important;padding:8px 18px;border-radius:50px;transition:background .2s,transform .18s!important}
-.nav-cta:hover{background:var(--rust-dk)!important;transform:translateY(-1px)!important}
-.nav-cta::after{display:none!important}
-.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
-.burger span{width:22px;height:2px;background:var(--bark);border-radius:2px;transition:.28s;display:block}
-.mob-nav{display:none;flex-direction:column;background:#fff;border-top:1px solid var(--warm);position:absolute;top:66px;left:0;right:0;box-shadow:var(--sh-lg)}
-.mob-nav.open{display:flex}
-.mob-nav a{padding:13px 24px;font-size:.95rem;font-weight:500;color:var(--text);border-bottom:1px solid var(--cream)}
-.mob-nav a:last-child{color:var(--rust);font-weight:700;border:none}
-@media(max-width:680px){nav.desk{display:none}.burger{display:flex}}
+    /* ─── COUNTDOWN BANNER ───────────────────────────────── */
+    .countdown-bar {
+      background: var(--bg3);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      padding: 10px 16px;
+      font-family: var(--font-ui);
+      font-size: .75rem;
+      letter-spacing: .1em;
+      color: var(--cream-dim);
+    }
+    .countdown-bar strong { color: var(--gold); }
+    #cd-timer { font-family: var(--font-head); font-size: .95rem; color: var(--gold-lt); letter-spacing: .08em; }
 
-/* ── HERO ── */
-.hero{padding:clamp(52px,8vw,100px) clamp(16px,4vw,48px);position:relative;overflow:hidden;background:linear-gradient(145deg,#fdf5eb 0%,#f8ead6 35%,#eef7f5 70%,#f5eaf7 100%)}
-.hero-orb{position:absolute;border-radius:50%;filter:blur(72px);pointer-events:none}
-.orb-a{width:380px;height:380px;background:radial-gradient(circle,rgba(212,136,10,.28),transparent);top:-80px;right:-60px;animation:orb1 10s ease-in-out infinite}
-.orb-b{width:320px;height:320px;background:radial-gradient(circle,rgba(30,122,122,.22),transparent);bottom:-60px;left:-40px;animation:orb2 12s ease-in-out infinite}
-.orb-c{width:260px;height:260px;background:radial-gradient(circle,rgba(107,52,97,.18),transparent);bottom:10%;right:25%;animation:float 9s ease-in-out infinite}
-.hero-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center;position:relative;z-index:1}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(184,74,24,.1);color:var(--rust);font-size:.73rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 13px;border-radius:50px;margin-bottom:18px;border:1px solid rgba(184,74,24,.18)}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:700;line-height:1.1;color:var(--bark);margin-bottom:18px}
-.hero h1 em{font-style:italic;color:var(--rust)}
-.hero p{color:var(--muted);font-size:clamp(.9rem,1.8vw,1.05rem);max-width:460px;margin-bottom:30px;line-height:1.8}
-.hero-btns{display:flex;flex-wrap:wrap;gap:10px}
-.hero-visual{display:flex;flex-direction:column;gap:12px}
-.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:4px}
-.stat{background:rgba(255,255,255,.78);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.95);border-radius:12px;padding:16px 10px;text-align:center;transition:transform .22s,box-shadow .22s}
-.stat:hover{transform:translateY(-3px);box-shadow:var(--sh-lg)}
-.stat-n{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--rust)}
-.stat-l{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:3px}
-.plat-cards{display:flex;flex-direction:column;gap:8px}
-.plat-card{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.95);border-radius:11px;padding:11px 14px;transition:all .22s;position:relative;overflow:hidden}
-.plat-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
-.plat-card.et::before{background:var(--rust)}
-.plat-card.wn::before{background:var(--indigo)}
-.plat-card.ig::before{background:linear-gradient(180deg,var(--gold),var(--plum))}
-.plat-card:hover{background:#fff;box-shadow:var(--sh-lg);transform:translateX(5px)}
-.plat-ico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff}
-.plat-ico.et{background:#F56400}.plat-ico.ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}.plat-ico.wn{background:var(--indigo)}
-.plat-name{font-weight:600;font-size:.84rem;color:var(--bark)}
-.plat-sub{font-size:.71rem;color:var(--muted)}
-.plat-arr{margin-left:auto;color:var(--muted);font-size:.85rem;transition:transform .2s}
-.plat-card:hover .plat-arr{transform:translateX(4px)}
-@media(max-width:780px){.hero-inner{grid-template-columns:1fr}.hero-visual{order:-1}}
+    /* ─── HEADER / NAV ───────────────────────────────────── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,12,11,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 clamp(1rem, 5vw, 4rem);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1200px; margin: 0 auto; height: 68px;
+    }
+    .logo {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      letter-spacing: .18em;
+      color: var(--gold-lt);
+    }
+    .logo span { color: var(--rose); }
+    nav { display: flex; gap: 2rem; align-items: center; }
+    nav a {
+      font-family: var(--font-ui);
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      transition: color .25s;
+    }
+    nav a:hover { color: var(--gold-lt); }
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold) !important;
+      padding: 7px 18px;
+      border-radius: var(--radius);
+      transition: background .25s, color .25s !important;
+    }
+    .nav-cta:hover { background: var(--gold); color: #0d0c0b !important; }
+    .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .burger span { display: block; width: 24px; height: 1.5px; background: var(--cream); transition: .3s; }
 
-/* ── BUTTONS ── */
-.btn{display:inline-flex;align-items:center;gap:7px;padding:12px 22px;border-radius:50px;font-weight:600;font-size:.88rem;transition:all .22s;cursor:pointer;border:none;font-family:inherit;letter-spacing:.01em}
-.btn-rust{background:var(--rust);color:#fff;box-shadow:0 4px 16px rgba(184,74,24,.25)}
-.btn-rust:hover{background:var(--rust-dk);transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,74,24,.35)}
-.btn-teal{background:var(--teal);color:#fff;box-shadow:0 4px 14px rgba(30,122,122,.2)}
-.btn-teal:hover{background:#165e5e;transform:translateY(-2px);box-shadow:0 8px 22px rgba(30,122,122,.3)}
-.btn-outline{background:transparent;color:var(--rust);border:2px solid var(--rust)}
-.btn-outline:hover{background:var(--rust);color:#fff;transform:translateY(-1px)}
-.btn-plum{background:var(--plum);color:#fff}
-.btn-plum:hover{background:#541a4a;transform:translateY(-2px);box-shadow:0 8px 22px rgba(107,52,97,.3)}
-.btn-gold{background:var(--gold);color:#fff}
-.btn-gold:hover{background:#a06e0a;transform:translateY(-2px)}
+    /* ─── MOBILE NAV ─────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .burger { display: flex; }
+      nav {
+        display: none; flex-direction: column; position: absolute;
+        top: 68px; left: 0; right: 0;
+        background: rgba(13,12,11,0.97);
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem 2rem; gap: 1.5rem;
+        z-index: 99;
+      }
+      nav.open { display: flex; }
+    }
 
-/* ── STRIPE ── */
-.stripe{height:4px;background:linear-gradient(90deg,var(--teal),var(--plum),var(--gold),var(--rust),var(--indigo))}
+    /* ─── HERO ───────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 4rem 1.5rem;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 30%, rgba(201,168,76,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(176,101,74,0.06) 0%, transparent 60%),
+        var(--bg);
+    }
+    .hero-kantha {
+      position: absolute; inset: 0;
+      opacity: .045;
+      background-image: repeating-linear-gradient(
+        0deg, transparent, transparent 28px, rgba(201,168,76,.5) 28px, rgba(201,168,76,.5) 29px
+      ), repeating-linear-gradient(
+        90deg, transparent, transparent 28px, rgba(201,168,76,.5) 28px, rgba(201,168,76,.5) 29px
+      );
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 700px; }
+    .eyebrow {
+      font-family: var(--font-ui);
+      font-size: .68rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp .8s .2s forwards;
+    }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.08;
+      color: var(--cream);
+      letter-spacing: .04em;
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp .9s .35s forwards;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold-lt); }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--cream-dim);
+      max-width: 480px; margin: 0 auto 2.5rem;
+      opacity: 0; animation: fadeUp .9s .5s forwards;
+    }
+    .btn-group {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp .9s .65s forwards;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: #0d0c0b;
+      font-family: var(--font-ui);
+      font-size: .75rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: none; border-radius: var(--radius);
+      cursor: pointer;
+      transition: background .25s, transform .2s;
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      font-family: var(--font-ui);
+      font-size: .75rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 13px 32px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: border-color .25s, color .25s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-ornament {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      opacity: 0; animation: fadeUp .9s 1s forwards;
+    }
+    .hero-ornament span {
+      font-family: var(--font-ui); font-size: .6rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--text-dim);
+    }
+    .scroll-line {
+      width: 1px; height: 48px; background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse { 0%,100%{opacity:.4} 50%{opacity:1} }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-/* ── SECTION BASE ── */
-section{padding:clamp(52px,7vw,96px) clamp(16px,4vw,48px)}
-.inner{max-width:1240px;margin:0 auto}
-.s-tag{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:9px;display:block}
-.s-tag.rust{color:var(--rust)}.s-tag.teal{color:var(--teal)}.s-tag.plum{color:var(--plum)}.s-tag.gold{color:var(--gold)}.s-tag.saffron{color:var(--saffron)}
-.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,4vw,2.6rem);font-weight:700;color:var(--bark);margin-bottom:12px;line-height:1.18}
-.s-sub{color:var(--muted);font-size:.98rem;max-width:540px;margin-bottom:34px;line-height:1.78}
+    /* ─── SECTION COMMONS ────────────────────────────────── */
+    section { padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 5vw, 4rem); }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-family: var(--font-ui);
+      font-size: .65rem; letter-spacing: .3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: .75rem;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 400; color: var(--cream);
+      letter-spacing: .04em; line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; color: var(--gold-lt); }
+    .divider {
+      width: 60px; height: 1px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin: 1.5rem 0;
+    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ── SHOP / ETSY EMBEDS ── */
-#shop{background:var(--sand)}
-.etsy-embed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;margin-bottom:32px}
-.etsy-embed-wrap{background:#fff;border-r
+    /* ─── ABOUT ──────────────────────────────────────────── */
+    #about { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-wrap::before {
+      content: '';
+      position: absolute; top: -16px; left: -16px;
+      width: 100%; height: 100%;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      pointer-events: none;
+    }
+    .about-img-wrap img {
+      width: 100%; border-radius: var(--radius);
+      filter: sepia(.15) brightness(.9);
+      box-shadow: 0 24px 60px rgba(0,0,0,.6);
+    }
+    .about-photo-placeholder {
+      aspect-ratio: 3/4;
+      background: var(--bg3);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: .5rem;
+      color: var(--text-dim);
+      font-family: var(--font-ui); font-size: .7rem; letter-spacing: .1em;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0,0,0,.6);
+      border: 1px dashed var(--border);
+    }
+    .about-photo-placeholder svg { width: 40px; height: 40px; opacity: .3; }
+    .about-text p { color: var(--cream-dim); font-size: 1.05rem; margin-bottom: 1rem; }
+    .about-text p:first-of-type { font-size: 1.15rem; color: var(--cream); }
+    @media (max-width: 800px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    /* ─── SHOP ───────────────────────────────────────────── */
+    #shop { background: var(--bg); }
+    .shop-intro { max-width: 560px; margin-bottom: 3rem; }
+    .shop-intro p { color: var(--cream-dim); }
+    .shop-note {
+      font-family: var(--font-ui); font-size: .72rem; letter-spacing: .1em;
+      color: var(--gold); margin-top: .5rem;
+    }
+
+    /* Etsy embed grid */
+    .etsy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .etsy-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color .3s, transform .3s;
+    }
+    .etsy-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .etsy-card iframe {
+      width: 100%; border: none; display: block;
+      min-height: 420px;
+    }
+    /* Fallback card if embed doesn't load */
+    .etsy-link-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: border-color .3s, transform .3s;
+    }
+    .etsy-link-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .etsy-link-card .card-img {
+      aspect-ratio: 1 / 1;
+      background: var(--bg2);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .etsy-link-card .card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .5s;
+    }
+    .etsy-link-card:hover .card-img img { transform: scale(1.04); }
+    .etsy-link-card .card-img-placeholder {
+      width: 100%; aspect-ratio: 1/1;
+      background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-dim); font-size: .75rem;
+      font-family: var(--font-ui); letter-spacing: .1em;
+    }
+    .etsy-link-card .card-body {
+      padding: 1.1rem 1.25rem 1.4rem;
+      display: flex; flex-direction: column; flex: 1;
+    }
+    .etsy-link-card .card-title {
+      font-family: var(--font-body);
+      font-size: 1.05rem; color: var(--cream);
+      margin-bottom: .3rem; line-height: 1.35;
+    }
+    .etsy-link-card .card-price {
+      font-family: var(--font-head);
+      font-size: 1rem; color: var(--gold);
+      margin-bottom: .8rem;
+    }
+    .etsy-link-card .card-btn {
+      display: inline-block; margin-top: auto;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--font-ui); font-size: .68rem;
+      letter-spacing: .14em; text-transform: uppercase;
+      padding: 8px 16px; border-radius: var(--radius);
+      transition: background .2s, color .2s;
+      text-align: center;
+    }
+    .etsy-link-card:hover .card-btn { background: var(--gold); color: #0d0c0b; }
+    .shop-cta { margin-top: 3rem; text-align: center; }
+
+    /* ─── CUSTOM ORDERS ──────────────────────────────────── */
+    #custom {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .custom-grid {
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: start;
+    }
+    .custom-text p { color: var(--cream-dim); margin-bottom: 1rem; font-size: 1.05rem; }
+    .custom-items {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;
+    }
+    .custom-item {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1rem 1.1rem;
+      font-family: var(--font-ui); font-size: .75rem; letter-spacing: .08em;
+      color: var(--cream-dim); text-transform: uppercase;
+      transition: border-color .2s, color .2s;
+    }
+    .custom-item:hover { border-color: var(--gold); color: var(--gold-lt); }
+    .custom-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-field { display: flex; flex-direction: column; gap: .4rem; }
+    .form-field label {
+      font-family: var(--font-ui); font-size: .68rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      background: var(--bg3); border: 1px solid var(--border);
+      color: var(--text); font-family: var(--font-body); font-size: 1rem;
+      padding: .75rem 1rem; border-radius: var(--radius);
+      outline: none; resize: vertical;
+      transition: border-color .2s;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus { border-color: var(--gold); }
+    .form-field select option { background: var(--bg3); }
+    .form-note {
+      font-family: var(--font-ui); font-size: .65rem; letter-spacing: .08em;
+      color: var(--text-dim); font-style: italic;
+    }
+    @media (max-width: 800px) {
+      .custom-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .custom-items { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ─── INSTAGRAM / REEL ───────────────────────────────── */
+    #instagram { background: var(--bg); }
+    .insta-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem; }
+    .insta-handle {
+      font-family: var(--font-ui); font-size: .8rem; letter-spacing: .12em;
+      color: var(--gold); display: flex; align-items: center; gap: .5rem;
+    }
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .insta-embed-wrap {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      min-height: 420px;
+    }
+    .insta-embed-wrap blockquote { margin: 0; }
+    /* Reel */
+    .reel-wrap {
+      border-top: 1px solid var(--border);
+      padding-top: 3rem; margin-top: 1rem;
+    }
+    .reel-inner {
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: center;
+    }
+    .reel-text .section-title { font-size: clamp(1.5rem, 3vw, 2.2rem); }
+    .reel-text p { color: var(--cream-dim); font-size: 1.05rem; margin-bottom: 1.5rem; }
+    .reel-video {
+      border-radius: var(--radius); overflow: hidden;
+      background: var(--bg3); border: 1px solid var(--border);
+      box-shadow: 0 24px 60px rgba(0,0,0,.5);
+    }
+    .reel-video video { width: 100%; display: block; }
+    .reel-video-placeholder {
+      aspect-ratio: 9/16; max-height: 520px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem;
+      color: var(--text-dim); font-family: var(--font-ui);
+      font-size: .72rem; letter-spacing: .1em;
+    }
+    @media (max-width: 900px) {
+      .insta-grid { grid-template-columns: 1fr 1fr; }
+      .reel-inner { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 600px) {
+      .insta-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── REVIEWS ─────────────────────────────────────────── */
+    #reviews {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .reviews-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .review-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem;
+    }
+    .stars { color: var(--gold); letter-spacing: .1em; margin-bottom: .75rem; font-size: .9rem; }
+    .review-text {
+      font-family: var(--font-body); font-size: 1.05rem;
+      color: var(--cream-dim); font-style: italic;
+      line-height: 1.65; margin-bottom: 1rem;
+    }
+    .reviewer {
+      font-family: var(--font-ui); font-size: .68rem;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--text-dim);
+    }
+
+    /* ─── CONTACT ─────────────────────────────────────────── */
+    #contact { background: var(--bg); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+    }
+    .contact-info p { color: var(--cream-dim); font-size: 1.05rem; margin-bottom: 1rem; }
+    .contact-links { display: flex; flex-direction: column; gap: .75rem; margin-top: 2rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: .75rem;
+      font-family: var(--font-ui); font-size: .8rem; letter-spacing: .08em;
+      color: var(--cream-dim); transition: color .2s;
+    }
+    .contact-link:hover { color: var(--gold-lt); }
+    .contact-link svg { width: 18px; height: 18px; flex-shrink: 0; opacity: .6; }
+    @media (max-width: 800px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 3rem clamp(1.5rem, 5vw, 4rem) 2rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: var(--font-head);
+      font-size: 1.6rem; letter-spacing: .18em;
+      color: var(--gold-lt); margin-bottom: 1rem;
+    }
+    .footer-logo span { color: var(--rose); }
+    .footer-links {
+      display: flex; justify-content: center; gap: 2rem;
+      flex-wrap: wrap; margin-bottom: 1.5rem;
+    }
+    .footer-links a {
+      font-family: var(--font-ui); font-size: .68rem;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--text-dim); transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy {
+      font-family: var(--font-ui); font-size: .65rem;
+      color: var(--text-dim); letter-spacing: .08em;
+    }
+
+    /* ─── FLOATING DM BUTTON ─────────────────────────────── */
+    .dm-btn {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+      background: var(--gold);
+      color: #0d0c0b;
+      font-family: var(--font-ui); font-size: .68rem;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: 13px 20px;
+      border-radius: 30px;
+      box-shadow: 0 8px 32px rgba(201,168,76,.35);
+      display: flex; align-items: center; gap: .5rem;
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .dm-btn:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,168,76,.45); }
+    .dm-btn svg { width: 16px; height: 16px; }
+  </style>
+</head>
+<body>
+
+<!-- ── MARQUEE BANNER ─────────────────────────────────────── -->
+<div class="marquee-bar" aria-hidden="true">
+  <div class="marquee-track">
+    <span>✦ Handcrafted Kantha Wraps</span>
+    <span>✦ Wearable Art</span>
+    <span>✦ Custom Orders Welcome</span>
+    <span>✦ Free Shipping on Orders $75+</span>
+    <span>✦ Ships from Long Beach, CA</span>
+    <span>✦ New Arrivals Every Week</span>
+    <span>✦ Handcrafted Kantha Wraps</span>
+    <span>✦ Wearable Art</span>
+    <span>✦ Custom Orders Welcome</span>
+    <span>✦ Free Shipping on Orders $75+</span>
+    <span>✦ Ships from Long Beach, CA</span>
+    <span>✦ New Arrivals Every Week</span>
+  </div>
+</div>
+
+<!-- ── COUNTDOWN BANNER ───────────────────────────────────── -->
+<div class="countdown-bar">
+  <strong>Summer Pop-Up Sale</strong> ends in &nbsp;<span id="cd-timer">—</span>&nbsp; · Use code <strong>LUNA15</strong> for 15% off
+</div>
+
+<!-- ── HEADER ─────────────────────────────────────────────── -->
+<header>
+  <div class="nav-inner">
+    <a href="#" class="logo">Luna<span>✦</span>Styles</a>
+    <div class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+    <nav id="nav">
+      <a href="#about">About</a>
+      <a href="#shop">Shop</a>
+      <a href="#custom">Custom</a>
+      <a href="#instagram">Gallery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.etsy.com/shop/lunastyles2026" target="_blank" class="nav-cta">Shop Etsy</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── HERO ───────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-kantha"></div>
+  <div class="hero-content">
+    <p class="eyebrow">Handcrafted · One of a Kind</p>
+    <h1>Wear the <em>Art.</em><br>Feel the Story.</h1>
+    <p>Kantha wraps, quilts, and wearable treasures. Every piece hand-stitched with intention — no two alike.</p>
+    <div class="btn-group">
+      <a href="#shop" class="btn-primary">Browse the Collection</a>
+      <a href="#custom" class="btn-outline">Request Custom Order</a>
+    </div>
+  </div>
+  <div class="hero-ornament">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ── ABOUT ──────────────────────────────────────────────── -->
+<section id="about">
+  <div class="section-inner about-grid reveal">
+    <div class="about-img-wrap">
+      <!-- Replace src with Magaly's photo path, e.g. "images/magaly.jpg" -->
+      <div class="about-photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span>Add magaly.jpg here</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <p class="section-label">The Maker</p>
+      <h2 class="section-title">Hello, I'm <em>Magaly</em></h2>
+      <div class="divider"></div>
+      <p>I'm a self-taught textile artist based in Long Beach, California, with a deep love for the meditative art of kantha — the ancient South Asian tradition of layering and hand-stitching fabric into something new.</p>
+      <p>Every wrap, quilt, and wearable piece I create carries its own story. I source vintage and reclaimed fabrics, giving each one a second life through slow, intentional craft.</p>
+      <p>What you wear isn't just fabric — it's hours of care, color instinct, and a belief that everyday objects should be beautiful.</p>
+      <a href="https://www.instagram.com/lunastyles2026" target="_blank" class="btn-outline" style="display:inline-block;margin-top:1.5rem">Follow @lunastyles2026</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SHOP ────────────────────────────────────────────────── -->
+<section id="shop">
+  <div class="section-inner">
+    <div class="shop-intro reveal">
+      <p class="section-label">The Collection</p>
+      <h2 class="section-title">Shop <em>Luna Styles</em></h2>
+      <div class="divider"></div>
+      <p>Each piece is one-of-a-kind. When it's gone, it's gone.</p>
+      <p class="shop-note">↳ All items ship directly from my Etsy shop · Secure checkout · Handmade with love</p>
+    </div>
+
+    <!-- 
+      ETSY LISTING CARDS
+      To add/update listings:
+        1. Go to etsy.com/shop/lunastyles2026
+        2. Open a listing
+        3. Copy the listing URL, e.g. https://www.etsy.com/listing/1234567890/item-name
+        4. Replace the href AND update the title/price below
+        5. To get the listing image: right-click the Etsy listing photo → Copy image address → paste as the img src
+    -->
+    <div class="etsy-grid reveal">
+
+      <!-- LISTING CARD 1 — replace with real listing -->
+      <a class="etsy-link-card" href="https://www.etsy.com/shop/lunastyles2026" target="_blank" rel="noopener">
+        <div class="card-img">
+          <div class="card-img-placeholder">Add listing image</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Kantha Wrap — Listing 1</div>
+          <div class="card-price">$XX.00</div>
+          <div class="card-btn">View on Etsy</div>
+        </div>
+      </a>
+
+      <!-- LISTING CARD 2 -->
+      <a class="etsy-link-card" href="https://www.etsy.com/shop/lunastyles2026" target="_blank" rel="noopener">
+        <div class="card-img">
+          <div class="card-img-placeholder">Add listing image</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Kantha Wrap — Listing 2</div>
+          <div class="card-price">$XX.00</div>
+          <div class="card-btn">View on Etsy</div>
+        </div>
+      </a>
+
+      <!-- LISTING CARD 3 -->
+      <a class="etsy-link-card" href="https://www.etsy.com/shop/lunastyles2026" target="_blank" rel="noopener">
+        <div class="card-img">
+          <div class="card-img-placeholder">Add listing image</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Kantha Wrap — Listing 3</div>
+          <div class="card-price">$XX.00</div>
+          <div class="card-btn">View on Etsy</div>
+        </div>
+      </a>
+
+      <!-- LISTING CARD 4 -->
+      <a class="etsy-link-card" href="https://www.etsy.com/shop/lunastyles2026" target="_blank" rel="noopener">
+        <div class="card-img">
+          <div class="card-img-placeholder">Add listing image</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Kantha Wrap — Listing 4</div>
+          <div class="card-price">$XX.00</div>
+          <div class="card-btn">View on Etsy</div>
+        </div>
+      </a>
+
+      <!-- LISTING CARD 5 -->
+      <a class="etsy-link-card" href="https://www.etsy.com/shop/lunastyles2026" target="_blank" rel="noopener">
+        <div class="card-img">
+          <div class="card-img-placeholder">Add listing image</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Kantha Wrap — Listing 5</div>
+          <div class="card-price">$XX.00</div>
+          <div class="card-btn">View on Etsy</div>
+        </div>
+      </a>
+
+      <!-- LISTING CARD 6 -->
+      <a class="etsy-link-card" href="https://www.etsy.com/shop/lunastyles2026" target="_blank" rel="noopener">
+        <div class="card-img">
+          <div class="card-img-placeholder">Add listing image</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Kantha Wrap — Listing 6</div>
+          <div class="card-price">$XX.00</div>
+          <div class="card-btn">View on Etsy</div>
+        </div>
+      </a>
+
+    </div><!-- /etsy-grid -->
+
+    <div class="shop-cta reveal">
+      <a href="https://www.etsy.com/shop/lunastyles2026" target="_blank" class="btn-primary">View All Items on Etsy →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CUSTOM ORDERS ───────────────────────────────────────── -->
+<section id="custom">
+  <div class="section-inner custom-grid">
+    <div class="custom-text reveal">
+      <p class="section-label">Made for You</p>
+      <h2 class="section-title">Custom <em>Orders</em></h2>
+      <div class="divider"></div>
+      <p>Want something truly one-of-a-kind? I take a limited number of custom commissions each month. Tell me your colors, your vibe, your vision — and I'll create it by hand.</p>
+      <p>Custom pieces typically take 2–3 weeks. Turnaround time and pricing discussed at time of order.</p>
+      <p class="form-note">* Custom orders are final sale. A 50% deposit is required to begin work.</p>
+      <div class="custom-items">
+        <div class="custom-item">Kantha Wraps</div>
+        <div class="custom-item">Quilts</div>
+        <div class="custom-item">Jackets</div>
+        <div class="custom-item">Bags</div>
+        <div class="custom-item">Skirts</div>
+        <div class="custom-item">Wall Art</div>
+      </div>
+    </div>
+    <div class="custom-form reveal">
+      <div class="form-field">
+        <label for="cf-name">Your Name</label>
+        <input type="text" id="cf-name" placeholder="First & Last name" />
+      </div>
+      <div class="form-field">
+        <label for="cf-email">Email Address</label>
+        <input type="email" id="cf-email" placeholder="you@example.com" />
+      </div>
+      <div class="form-field">
+        <label for="cf-item">Item Type</label>
+        <select id="cf-item">
+          <option value="">Select an item...</option>
+          <option>Kantha Wrap</option>
+          <option>Quilt</option>
+          <option>Jacket</option>
+          <option>Bag</option>
+          <option>Skirt</option>
+          <option>Wall Art</option>
+          <option>Other / Not Sure</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="cf-colors">Colors & Vibe</label>
+        <input type="text" id="cf-colors" placeholder="e.g. earthy, deep jewel tones, pastels..." />
+      </div>
+      <div class="form-field">
+        <label for="cf-details">Tell Me More</label>
+        <textarea id="cf-details" rows="4" placeholder="Any details, occasion, size preference, inspiration..."></textarea>
+      </div>
+      <button class="btn-primary" id="cf-submit" style="margin-top:.5rem">Send Inquiry</button>
+      <p class="form-note" id="cf-msg" style="margin-top:.75rem;display:none;color:var(--gold)">✓ Sent! I'll be in touch within 24 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── INSTAGRAM & REEL ────────────────────────────────────── -->
+<section id="instagram">
+  <div class="section-inner">
+    <div class="insta-header reveal">
+      <div>
+        <p class="section-label">Follow Along</p>
+        <h2 class="section-title"><em>@lunastyles2026</em></h2>
+      </div>
+      <a href="https://www.instagram.com/lunastyles2026" target="_blank" class="insta-handle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        View on Instagram
+      </a>
+    </div>
+
+    <!-- 
+      INSTAGRAM EMBEDS
+      To update: Go to Instagram → open the post → click "..." → Embed → copy the blockquote
+      Replace each blockquote below with your real embed codes
+    -->
+    <div class="insta-grid reveal">
+      <div class="insta-embed-wrap">
+        <!-- PASTE INSTAGRAM EMBED 1 HERE -->
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/lunastyles2026/" data-instgrm-version="14" style="background:#1a1815;border:1px solid rgba(180,148,90,0.18);border-radius:4px;padding:16px;width:100%;">
+          <a href="https://www.instagram.com/lunastyles2026/" target="_blank">View post from @lunastyles2026</a>
+        </blockquote>
+      </div>
+      <div class="insta-embed-wrap">
+        <!-- PASTE INSTAGRAM EMBED 2 HERE -->
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/lunastyles2026/" data-instgrm-version="14" style="background:#1a1815;border:1px solid rgba(180,148,90,0.18);border-radius:4px;padding:16px;width:100%;">
+          <a href="https://www.instagram.com/lunastyles2026/" target="_blank">View post from @lunastyles2026</a>
+        </blockquote>
+      </div>
+      <div class="insta-embed-wrap">
+        <!-- PASTE INSTAGRAM EMBED 3 HERE -->
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/lunastyles2026/" data-instgrm-version="14" style="background:#1a1815;border:1px solid rgba(180,148,90,0.18);border-radius:4px;padding:16px;width:100%;">
+          <a href="https://www.instagram.com/lunastyles2026/" target="_blank">View post from @lunastyles2026</a>
+        </blockquote>
+      </div>
+    </div>
+
+    <!-- REEL -->
+    <div class="reel-wrap reveal">
+      <div class="reel-inner">
+        <div class="reel-text">
+          <p class="section-label">Behind the Craft</p>
+          <h3 class="section-title">Watch the <em>Process</em></h3>
+          <div class="divider"></div>
+          <p>A glimpse into the making — from folded fabric to finished piece. Every stitch placed by hand.</p>
+          <a href="https://www.instagram.com/lunastyles2026" target="_blank" class="btn-outline" style="display:inline-block">See More Reels →</a>
+        </div>
+        <div class="reel-video">
+          <!-- 
+            REEL VIDEO: place "reel.mp4" in same folder as index.html
+            Or swap <video> for an Instagram reel embed blockquote
+          -->
+          <video autoplay muted loop playsinline poster="">
+            <source src="reel.mp4" type="video/mp4">
+            <div class="reel-video-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" width="48" height="48"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+              <span>Add reel.mp4 to site folder</span>
+            </div>
+          </video>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── REVIEWS ─────────────────────────────────────────────── -->
+<section id="reviews">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Customer Love</p>
+      <h2 class="section-title">What People <em>Say</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Absolutely stunning. The colors are even more vivid in person. I've gotten so many compliments on my wrap — people keep asking where I got it."</p>
+        <p class="reviewer">— Sarah M., Verified Buyer</p>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Magaly put so much care into the custom piece she made me. It arrived beautifully packaged and the quality is incredible. Worth every penny."</p>
+        <p class="reviewer">— Jasmine T., Custom Order</p>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"I ordered as a gift and my friend cried when she opened it. The artistry is unreal. I'll definitely be back for my own piece."</p>
+        <p class="reviewer">— Rosa L., Verified Buyer</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ─────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="section-inner contact-grid">
+    <div class="contact-info reveal">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Let's <em>Connect</em></h2>
+      <div class="divider"></div>
+      <p>Questions about an order? Want to collaborate? Just want to say hi? I'd love to hear from you.</p>
+      <p>The fastest way to reach me is a DM on Instagram or a message through Etsy.</p>
+      <div class="contact-links">
+        <a href="https://www.instagram.com/lunastyles2026" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          @lunastyles2026 on Instagram
+        </a>
+        <a href="https://www.etsy.com/shop/lunastyles2026" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Luna Styles on Etsy
+        </a>
+        <a href="mailto:lunastyles2026@gmail.com" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          lunastyles2026@gmail.com
+        </a>
+      </div>
+    </div>
+    <div class="custom-form reveal">
+      <div class="form-field">
+        <label for="ct-name">Name</label>
+        <input type="text" id="ct-name" placeholder="Your name" />
+      </div>
+      <div class="form-field">
+        <label for="ct-email">Email</label>
+        <input type="email" id="ct-email" placeholder="you@example.com" />
+      </div>
+      <div class="form-field">
+        <label for="ct-msg">Message</label>
+        <textarea id="ct-msg" rows="5" placeholder="How can I help you?"></textarea>
+      </div>
+      <button class="btn-primary" id="ct-submit">Send Message</button>
+      <p class="form-note" id="ct-confirm" style="margin-top:.75rem;display:none;color:var(--gold)">✓ Message sent! I'll reply within 24 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-logo">Luna<span>✦</span>Styles</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#shop">Shop</a>
+    <a href="#custom">Custom Orders</a>
+    <a href="#instagram">Gallery</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a href="https://www.etsy.com/shop/lunastyles2026" target="_blank">Etsy Shop</a>
+  </div>
+  <p class="footer-copy">© 2026 Luna Styles · Handcrafted in Long Beach, CA · All rights reserved</p>
+</footer>
+
+<!-- ── FLOATING DM BUTTON ──────────────────────────────────── -->
+<a href="https://www.instagram.com/lunastyles2026" target="_blank" class="dm-btn" aria-label="DM on Instagram">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  DM Magaly
+</a>
+
+<!-- ── INSTAGRAM EMBED SCRIPT ──────────────────────────────── -->
+<script async src="//www.instagram.com/embed.js"></script>
+
+<script>
+  // ── MOBILE NAV ───────────────────────────────────────────
+  const burger = document.getElementById('burger');
+  const nav    = document.getElementById('nav');
+  burger.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+  // ── COUNTDOWN TIMER ──────────────────────────────────────
+  // Set your sale end date here (PST). Format: 'YYYY-MM-DDTHH:MM:SS'
+  const SALE_END = new Date('2026-07-04T23:59:59-07:00');
+  function updateCountdown() {
+    const now  = new Date();
+    const diff = SALE_END - now;
+    if (diff <= 0) { document.getElementById('cd-timer').textContent = 'Sale Ended'; return; }
+    const d  = Math.floor(diff / 86400000);
+    const h  = Math.floor((diff % 86400000) / 3600000);
+    const m  = Math.floor((diff % 3600000)  / 60000);
+    const s  = Math.floor((diff % 60000)    / 1000);
+    document.getElementById('cd-timer').textContent =
+      `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ── SCROLL REVEAL ────────────────────────────────────────
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: .1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── CUSTOM ORDER FORM ────────────────────────────────────
+  document.getElementById('cf-submit').addEventListener('click', () => {
+    const name   = document.getElementById('cf-name').value.trim();
+    const email  = document.getElementById('cf-email').value.trim();
+    const item   = document.getElementById('cf-item').value;
+    const colors = document.getElementById('cf-colors').value.trim();
+    const details= document.getElementById('cf-details').value.trim();
+    if (!name || !email) { alert('Please fill in your name and email.'); return; }
+    const subject = encodeURIComponent(`Custom Order Request — ${item || 'Luna Styles'}`);
+    const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nItem: ${item}\nColors/Vibe: ${colors}\n\nDetails:\n${details}`);
+    window.location.href = `mailto:lunastyles2026@gmail.com?subject=${subject}&body=${body}`;
+    document.getElementById('cf-msg').style.display = 'block';
+  });
+
+  // ── CONTACT FORM ─────────────────────────────────────────
+  document.getElementById('ct-submit').addEventListener('click', () => {
+    const name  = document.getElementById('ct-name').value.trim();
+    const email = document.getElementById('ct-email').value.trim();
+    const msg   = document.getElementById('ct-msg').value.trim();
+    if (!name || !email || !msg) { alert('Please fill in all fields.'); return; }
+    const subject = encodeURIComponent(`Message from ${name} — Luna Styles`);
+    const body    = encodeURIComponent(`From: ${name} (${email})\n\n${msg}`);
+    window.location.href = `mailto:lunastyles2026@gmail.com?subject=${subject}&body=${body}`;
+    document.getElementById('ct-confirm').style.display = 'block';
+  });
+</script>
+</body>
+</html>
