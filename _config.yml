@@ -1,4 +1,6 @@
 # GitHub Pages config
+render_with_liquid: false
+
 include:
   - reel.mp4
 
