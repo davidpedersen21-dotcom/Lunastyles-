@@ -1,0 +1,41 @@
+name: Sync Etsy Shop
+
+on:
+  schedule:
+    - cron: '0 8 * * *'   # 8 AM UTC every day
+  workflow_dispatch:        # allow manual trigger from GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Node dependencies
+        run: npm install
+
+      - name: Install Playwright browser
+        run: npx playwright install chromium --with-deps
+
+      - name: Scrape Etsy and update index.html
+        run: node scripts/sync-etsy.js
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "No changes — site is already up to date"
+          else
+            git add index.html
+            git commit -m "chore: auto-sync Etsy listings and reviews [skip ci]"
+            git push
+          fi
