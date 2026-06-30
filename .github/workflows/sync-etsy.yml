@@ -1,15 +1,16 @@
-name: Sync Etsy Shop
+name: Apply Etsy Sync Data
 
 on:
-  schedule:
-    - cron: '0 8 * * *'   # 8 AM UTC every day
-  workflow_dispatch:        # allow manual trigger from GitHub Actions tab
+  push:
+    paths:
+      - 'data/etsy-sync.json'   # fires when bookmarklet pushes new data
+  workflow_dispatch:             # manual trigger from Actions tab
 
 permissions:
   contents: write
 
 jobs:
-  sync:
+  apply:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,23 +20,17 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Install Node dependencies
-        run: npm install
-
-      - name: Install Playwright browser
-        run: npx playwright install chromium --with-deps
-
-      - name: Scrape Etsy and update index.html
-        run: node scripts/sync-etsy.js
+      - name: Apply Etsy data to index.html
+        run: node scripts/apply-etsy-data.js
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if git diff --quiet; then
-            echo "No changes — site is already up to date"
+            echo "No changes to index.html"
           else
             git add index.html
-            git commit -m "chore: auto-sync Etsy listings and reviews [skip ci]"
+            git commit -m "chore: apply Etsy sync — $(date -u '+%Y-%m-%d %H:%M UTC') [skip ci]"
             git push
           fi

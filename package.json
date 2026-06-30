@@ -2,9 +2,6 @@
   "name": "lunastyles",
   "private": true,
   "scripts": {
-    "sync": "node scripts/sync-etsy.js"
-  },
-  "dependencies": {
-    "playwright": "^1.49.1"
+    "apply": "node scripts/apply-etsy-data.js"
   }
 }
