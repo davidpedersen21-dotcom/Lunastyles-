@@ -1,7 +1,7 @@
 # Luna Styles — YouTube Shorts post kit
 
 ## Files
-- Video: NOT INCLUDED (missing out/lunastyles/matrix/social-9x16-captioned.mp4 — run render-matrix.mjs)
+- Video: social-9x16-captioned.mp4
 - Thumbnail: thumb.jpg
 - Caption: caption.txt (paste as the post copy)
 - Alt text: alt.txt (one-sentence video description)
