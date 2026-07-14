@@ -127,34 +127,6 @@
       "price": "$50.00"
     },
     {
-      "url": "https://www.etsy.com/listing/4520581641/reversible-kantha-pants-plus-size-boho",
-      "img": "https://i.etsystatic.com/65615339/r/il/dd085e/8127019624/il_340x270.8127019624_jf7f.jpg",
-      "name": "Reversible Kantha Pants Plus Size",
-      "tag": "Pants",
-      "price": "$50.00"
-    },
-    {
-      "url": "https://www.etsy.com/listing/4520580119/reversible-kantha-pants-plus-size-boho",
-      "img": "https://i.etsystatic.com/65615339/r/il/1a894a/8127006590/il_340x270.8127006590_yy83.jpg",
-      "name": "Reversible Kantha Pants Plus Size",
-      "tag": "Pants",
-      "price": "$50.00"
-    },
-    {
-      "url": "https://www.etsy.com/listing/4519976479/handmade-kantha-headband",
-      "img": "https://i.etsystatic.com/65615339/r/il/8e1692/8122803252/il_340x270.8122803252_e15a.jpg",
-      "name": "Handmade Kantha Headband",
-      "tag": "Accessories",
-      "price": "$10.00"
-    },
-    {
-      "url": "https://www.etsy.com/listing/4519975929/handmade-kantha-headband",
-      "img": "https://i.etsystatic.com/65615339/r/il/18f626/8170708463/il_340x270.8170708463_j867.jpg",
-      "name": "Handmade Kantha Headband",
-      "tag": "Accessories",
-      "price": "$10.00"
-    },
-    {
       "url": "https://www.etsy.com/listing/4519186769/boho-high-low-sundress-adjustable-tie",
       "img": "https://i.etsystatic.com/65615339/r/il/7e1fb9/8165137279/il_340x270.8165137279_r1hx.jpg",
       "name": "Boho High",
@@ -253,6 +225,34 @@
       "price": "$40.00"
     },
     {
+      "url": "https://www.etsy.com/listing/4504797462/handmade-kantha-tote-bag-upcycled",
+      "img": "https://i.etsystatic.com/65615339/r/il/68e3e9/8065260799/il_340x270.8065260799_j6is.jpg",
+      "name": "Handmade Kantha Tote Bag",
+      "tag": "Bags",
+      "price": "$30.00"
+    },
+    {
+      "url": "https://www.etsy.com/listing/4504621181/handmade-kantha-tote-bag-upcycled",
+      "img": "https://i.etsystatic.com/65615339/r/il/46fd08/8064439159/il_340x270.8064439159_irfn.jpg",
+      "name": "Handmade Kantha Tote Bag",
+      "tag": "Bags",
+      "price": "$35.00"
+    },
+    {
+      "url": "https://www.etsy.com/listing/4502627628/reversible-kantha-top-one-size-fits-most",
+      "img": "https://i.etsystatic.com/65615339/r/il/7f7970/8004668772/il_340x270.8004668772_fqrs.jpg",
+      "name": "Reversible Kantha Top",
+      "tag": "Tops",
+      "price": "$45.00"
+    },
+    {
+      "url": "https://www.etsy.com/listing/4502626152/reversible-kantha-top-one-size-fits-most",
+      "img": "https://i.etsystatic.com/65615339/r/il/af22d2/8004658686/il_340x270.8004658686_jz66.jpg",
+      "name": "Reversible Kantha Top",
+      "tag": "Tops",
+      "price": "$45.00"
+    },
+    {
       "url": "https://www.etsy.com/listing/4512514294/plus-size-reversible-mini-wrap-skirt",
       "img": "https://i.etsystatic.com/8117802653/r/il/652f62/8117802653/il_340x270.8117802653_s77e.jpg",
       "name": "Plus size Reversible Mini Wrap Skirt",
@@ -302,34 +302,6 @@
       "price": ""
     },
     {
-      "url": "https://www.etsy.com/listing/4504797462/handmade-kantha-tote-bag-upcycled",
-      "img": "https://i.etsystatic.com/65615339/r/il/68e3e9/8065260799/il_340x270.8065260799_j6is.jpg",
-      "name": "Handmade Kantha Tote Bag",
-      "tag": "Bags",
-      "price": "$30.00"
-    },
-    {
-      "url": "https://www.etsy.com/listing/4504621181/handmade-kantha-tote-bag-upcycled",
-      "img": "https://i.etsystatic.com/65615339/r/il/46fd08/8064439159/il_340x270.8064439159_irfn.jpg",
-      "name": "Handmade Kantha Tote Bag",
-      "tag": "Bags",
-      "price": "$35.00"
-    },
-    {
-      "url": "https://www.etsy.com/listing/4502627628/reversible-kantha-top-one-size-fits-most",
-      "img": "https://i.etsystatic.com/65615339/r/il/7f7970/8004668772/il_340x270.8004668772_fqrs.jpg",
-      "name": "Reversible Kantha Top",
-      "tag": "Tops",
-      "price": "$45.00"
-    },
-    {
-      "url": "https://www.etsy.com/listing/4502626152/reversible-kantha-top-one-size-fits-most",
-      "img": "https://i.etsystatic.com/65615339/r/il/af22d2/8004658686/il_340x270.8004658686_jz66.jpg",
-      "name": "Reversible Kantha Top",
-      "tag": "Tops",
-      "price": "$45.00"
-    },
-    {
       "url": "https://www.etsy.com/listing/4502624932/reversible-kantha-top-one-size-fits-most",
       "img": "https://i.etsystatic.com/65615339/r/il/16432e/8052572519/il_340x270.8052572519_syuo.jpg",
       "name": "Reversible Kantha Top",
@@ -351,13 +323,6 @@
       "price": "$45.00"
     },
     {
-      "url": "https://www.etsy.com/listing/4502150578/kantha-kimono-jacket-vintage-cotton",
-      "img": "https://i.etsystatic.com/65615339/r/il/4bd3ee/8049479007/il_340x270.8049479007_gb93.jpg",
-      "name": "Kantha Kimono Jacket",
-      "tag": "Jackets",
-      "price": "$50.00"
-    },
-    {
       "url": "https://www.etsy.com/listing/4501096199/reversible-kantha-top-one-size-fits-most",
       "img": "https://i.etsystatic.com/65615339/r/il/efbe9c/7994730724/il_340x270.7994730724_kso3.jpg",
       "name": "Reversible Kantha Top",
@@ -372,39 +337,11 @@
       "price": "$50.00"
     },
     {
-      "url": "https://www.etsy.com/listing/4500438906/reversible-kantha-top-one-size-fits-most",
-      "img": "https://i.etsystatic.com/65615339/r/il/da902e/8038419001/il_340x270.8038419001_c6qk.jpg",
-      "name": "Reversible Kantha Top",
-      "tag": "Tops",
-      "price": "$50.00"
-    },
-    {
-      "url": "https://www.etsy.com/listing/4500434518/reversible-kantha-top-one-size-fits-most",
-      "img": "https://i.etsystatic.com/65615339/r/il/021ccf/8038390959/il_340x270.8038390959_ofs6.jpg",
-      "name": "Reversible Kantha Top",
-      "tag": "Tops",
-      "price": "$50.00"
-    },
-    {
       "url": "https://www.etsy.com/listing/4500084791/reversible-kantha-bucket-hat-handmade",
       "img": "https://i.etsystatic.com/65615339/r/il/371df2/7988191482/il_340x270.7988191482_hwoc.jpg",
       "name": "Reversible Kantha Bucket Hat",
       "tag": "Hats",
       "price": "$40.00"
-    },
-    {
-      "url": "https://www.etsy.com/listing/4499978150/reversible-kantha-top-one-size-fits-most",
-      "img": "https://i.etsystatic.com/65615339/r/il/f51322/7987473738/il_340x270.7987473738_fz1c.jpg",
-      "name": "Reversible Kantha Top",
-      "tag": "Tops",
-      "price": "$50.00"
-    },
-    {
-      "url": "https://www.etsy.com/listing/4499899610/reversible-kantha-top-one-size-fits-most",
-      "img": "https://i.etsystatic.com/65615339/r/il/c14946/8034927161/il_340x270.8034927161_ao3b.jpg",
-      "name": "Reversible Kantha Top",
-      "tag": "Tops",
-      "price": "$50.00"
     },
     {
       "url": "https://www.etsy.com/listing/4497589406/reversible-kantha-bucket-hat-handmade",
@@ -471,5 +408,5 @@
       "date": ""
     }
   ],
-  "updatedAt": "2026-06-30T05:01:33.654Z"
+  "updatedAt": "2026-07-14T13:07:01.484Z"
 }
