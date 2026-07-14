@@ -33,12 +33,13 @@
   <div class="card">
     <p><strong>Step 2 — Create a GitHub token (one-time setup):</strong></p>
     <ol>
-      <li>Go to <code>github.com/settings/tokens/new</code></li>
+      <li>Go to <code>github.com/settings/personal-access-tokens/new</code></li>
       <li>Name it <code>Luna Styles Sync</code></li>
-      <li>Under <em>Scopes</em>, check <strong>repo</strong></li>
+      <li>Under <em>Repository access</em>, choose <strong>Only select repositories</strong> and pick <code>Lunastyles-</code></li>
+      <li>Under <em>Permissions → Repository permissions</em>, set <strong>Contents</strong> to <strong>Read and write</strong> (leave everything else as No access)</li>
       <li>Click <em>Generate token</em> and copy it</li>
     </ol>
-    <p class="note">The token is stored only in your browser's localStorage — never sent anywhere except GitHub.</p>
+    <p class="note">A token scoped this way can only write to this one repo — safer than a classic token with full <code>repo</code> access. It's stored only in your browser's localStorage — never sent anywhere except GitHub.</p>
   </div>
 
   <div class="card">
@@ -57,7 +58,7 @@
 if(!location.hostname.includes('etsy.com')){return alert('Run this on your Etsy shop page:\\netsy.com/shop/LunaStyles2026Shop');}
 const OWNER='davidpedersen21-dotcom',REPO='Lunastyles-',BRANCH='main',PATH='data/etsy-sync.json';
 let token=localStorage.getItem('_ls_pat');
-if(!token){token=prompt('Luna Styles Sync — First-time setup\\n\\nPaste your GitHub Personal Access Token\\n(needs repo scope)\\n\\nCreate one at: github.com/settings/tokens/new');if(!token)return;localStorage.setItem('_ls_pat',token.trim());}
+if(!token){token=prompt('Luna Styles Sync — First-time setup\\n\\nPaste your GitHub Personal Access Token\\n(fine-grained, scoped to this repo, Contents: Read and write)\\n\\nCreate one at: github.com/settings/personal-access-tokens/new');if(!token)return;localStorage.setItem('_ls_pat',token.trim());}
 token=token.trim();
 const toast=Object.assign(document.createElement('div'),{style:'position:fixed;top:16px;right:16px;padding:14px 22px;background:#222;color:#fff;border-radius:8px;z-index:2147483647;font:14px/1.5 sans-serif;max-width:360px;box-shadow:0 4px 20px rgba(0,0,0,.5);'});
 document.body.appendChild(toast);
