@@ -160,6 +160,25 @@ Listings are tagged by matching words in the title:
 
 ---
 
+## Image Export Bookmarklet
+
+Install page: `lunastyles.org/bookmarklet-images.html`
+
+Run on the Etsy shop page. Walks every listing, pulls its photos (via each
+listing's JSON-LD structured data, falling back to `<img>` tags matching
+`etsystatic.com` if JSON-LD isn't present), and downloads a single zip —
+`luna-styles-listing-images.zip` — with one folder per listing (named after
+the item title) containing that listing's photos. Zip is built entirely
+client-side (no external libraries).
+
+Requires no GitHub token — it doesn't push anything, just downloads a file.
+Since it fetches every listing page and every image sequentially, it can
+take a few minutes for a shop with many listings. If Etsy's image CDN
+blocks script-initiated downloads for some photos, the toast reports how
+many failed; everything that succeeded still ends up in the zip.
+
+---
+
 ## Manual Content Edits (no bookmarklet needed)
 
 - **Shows schedule** — edit the `.show-card` blocks in `#shows` section
