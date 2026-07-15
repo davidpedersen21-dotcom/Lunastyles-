@@ -189,9 +189,8 @@ nav {
     repeating-linear-gradient(-45deg, transparent 0,transparent 20px, rgba(176,16,48,.05) 20px, rgba(176,16,48,.05) 21px);
   background-size:42px 42px;
 }
-.hero-eyebrow { font-family:'Josefin Sans',sans-serif; font-size:.72rem; letter-spacing:.3em; text-transform:uppercase; color:var(--kantha-yellow); margin-bottom:1rem; animation:fadeUp .8s ease both; }
-.hero-title { font-family:'Playfair Display',serif; font-size:clamp(2.8rem,5vw,5.2rem); line-height:1; color:white; margin-bottom:1.5rem; animation:fadeUp .8s ease .15s both; }
-.hero-title em { font-style:italic; color:var(--burnt-orange); display:block; }
+.hero-title { font-family:'Playfair Display',serif; font-size:clamp(2.8rem,5vw,5.2rem); line-height:1; color:white; margin-bottom:1.5rem; animation:fadeUp .8s ease both; }
+.hero-title em { font-style:normal; font-weight:900; color:var(--burnt-orange); display:block; }
 .hero-subtitle { font-size:1.15rem; color:rgba(255,255,255,.72); line-height:1.75; max-width:430px; margin-bottom:2.5rem; animation:fadeUp .8s ease .3s both; }
 .hero-buttons { display:flex; gap:1rem; flex-wrap:wrap; animation:fadeUp .8s ease .45s both; }
 
@@ -273,7 +272,7 @@ nav {
 .flapping .wing-right { animation: wingFlapRight .35s ease-in-out; }
 
 /* ===== BUTTONS ===== */
-.btn { font-family:'Josefin Sans',sans-serif; font-size:.8rem; letter-spacing:.15em; text-transform:uppercase; padding:.9rem 2rem; border:none; cursor:pointer; text-decoration:none; display:inline-block; transition:all .3s; position:relative; overflow:hidden; }
+.btn { font-family:'Josefin Sans',sans-serif; font-size:.8rem; letter-spacing:.15em; text-transform:uppercase; padding:.9rem 2rem; border:none; cursor:pointer; text-decoration:none; display:inline-block; transition:background-color .3s, border-color .3s, color .3s, transform .3s, box-shadow .3s; position:relative; overflow:hidden; }
 .btn::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:rgba(255,255,255,.18); transform:skewX(-20deg); transition:left .4s; }
 .btn:hover::before { left:100%; }
 .btn-primary { background:var(--crimson); color:white; }
@@ -291,9 +290,8 @@ nav {
 @keyframes spinSlow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 
 /* ===== SECTION HELPERS ===== */
-.section-label { font-family:'Josefin Sans',sans-serif; font-size:.7rem; letter-spacing:.3em; text-transform:uppercase; color:var(--burnt-orange); margin-bottom:.75rem; }
 .section-title { font-family:'Playfair Display',serif; font-size:clamp(1.9rem,3.5vw,3.2rem); line-height:1.1; color:var(--ink); margin-bottom:1rem; }
-.section-title em { font-style:italic; color:var(--crimson); }
+.section-title em { font-style:normal; font-weight:900; color:var(--crimson); }
 .section-title-light { color:white; }
 @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
 .reveal { opacity:0; transform:translateY(40px); transition:opacity .7s ease,transform .7s ease; }
@@ -306,13 +304,13 @@ nav {
 .live-dot { width:8px; height:8px; background:white; border-radius:50%; animation:blink 1.2s ease-in-out infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
 .show-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; margin-top:2.5rem; }
-.show-card { background:rgba(255,255,255,.07); border:2px solid rgba(212,160,32,.3); padding:2.5rem 2rem; text-align:center; transition:all .3s; position:relative; overflow:hidden; }
+.show-card { background:rgba(255,255,255,.07); border:2px solid rgba(212,160,32,.3); padding:2.5rem 2rem; text-align:center; transition:transform .3s, border-color .3s, background-color .3s, box-shadow .3s; position:relative; overflow:hidden; }
 .show-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--crimson),var(--burnt-orange),var(--mustard),var(--kantha-green),var(--teal)); }
 .show-card:hover { transform:translateY(-10px); border-color:var(--kantha-yellow); background:rgba(255,255,255,.12); box-shadow:0 25px 60px rgba(0,0,0,.4); }
 .show-day { font-family:'Playfair Display',serif; font-size:2.4rem; color:var(--kantha-yellow); font-weight:900; }
 .show-time { font-family:'Josefin Sans',sans-serif; font-size:.85rem; color:rgba(255,255,255,.65); letter-spacing:.1em; margin:.3rem 0 1rem; }
 .show-desc { color:rgba(255,255,255,.75); font-size:1.05rem; line-height:1.65; margin-bottom:1.75rem; }
-.btn-whatnot { background:linear-gradient(135deg,#7B2FF7,#C42B8A); color:white; font-family:'Josefin Sans',sans-serif; font-size:.75rem; letter-spacing:.15em; text-transform:uppercase; padding:.8rem 1.75rem; border:none; cursor:pointer; text-decoration:none; display:inline-block; transition:all .3s; }
+.btn-whatnot { background:linear-gradient(135deg,#7B2FF7,#C42B8A); color:white; font-family:'Josefin Sans',sans-serif; font-size:.75rem; letter-spacing:.15em; text-transform:uppercase; padding:.8rem 1.75rem; border:none; cursor:pointer; text-decoration:none; display:inline-block; transition:transform .3s, box-shadow .3s; }
 .btn-whatnot:hover { transform:translateY(-3px); box-shadow:0 10px 30px rgba(123,47,247,.5); }
 
 /* ===== VIDEO ===== */
@@ -326,7 +324,7 @@ nav {
 .shop-container { max-width:1320px; margin:0 auto; }
 .shop-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:2.5rem; flex-wrap:wrap; gap:1rem; }
 .product-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:1.5rem; }
-.product-card { background:white; overflow:hidden; transition:all .35s; cursor:pointer; position:relative; border:2px solid transparent; text-decoration:none; display:block; }
+.product-card { background:white; overflow:hidden; transition:transform .35s, box-shadow .35s, border-color .35s; cursor:pointer; position:relative; border:2px solid transparent; text-decoration:none; display:block; }
 .product-card::after { content:'Shop on Etsy →'; position:absolute; inset:0; background:rgba(30,8,0,.88); color:white; font-family:'Josefin Sans',sans-serif; font-size:.8rem; letter-spacing:.2em; text-transform:uppercase; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity .3s; }
 .product-card:hover::after { opacity:1; }
 .product-card:hover { transform:translateY(-8px) scale(1.02); box-shadow:0 20px 50px rgba(176,16,48,.2); border-color:var(--crimson); }
@@ -358,7 +356,7 @@ nav {
   border:2px solid transparent;
   border-left:5px solid var(--crimson);
   box-shadow:0 4px 20px rgba(0,0,0,.07);
-  transition:all .3s; position:relative;
+  transition:transform .3s, box-shadow .3s, border-top-color .3s; position:relative;
 }
 .review-card:nth-child(2) { border-left-color:var(--burnt-orange); }
 .review-card:nth-child(3) { border-left-color:var(--mustard); }
@@ -403,10 +401,10 @@ nav {
 .contact-option {
   background:rgba(255,255,255,.07); border:2px solid rgba(255,255,255,.15);
   padding:2rem 1.5rem; text-align:center; text-decoration:none;
-  transition:all .3s; display:block;
+  transition:transform .3s, border-color .3s, background-color .3s, box-shadow .3s; display:block;
 }
 .contact-option:hover { transform:translateY(-6px); border-color:var(--kantha-yellow); background:rgba(255,255,255,.12); box-shadow:0 16px 40px rgba(0,0,0,.3); }
-.contact-option-icon { font-size:2.2rem; margin-bottom:.75rem; display:block; }
+.contact-option-icon { width:2rem; height:2rem; margin:0 auto .75rem; display:block; color:var(--kantha-yellow); }
 .contact-option-title { font-family:'Playfair Display',serif; font-size:1.2rem; color:white; margin-bottom:.4rem; }
 .contact-option-desc { font-family:'Josefin Sans',sans-serif; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.5); }
 
@@ -422,7 +420,7 @@ nav {
 .form-group input:focus,.form-group textarea:focus,.form-group select:focus { border-color:var(--kantha-yellow); background:rgba(212,160,32,.1); }
 .form-group select option { background:#1E0800; }
 .form-group textarea { resize:vertical; min-height:120px; }
-.btn-submit { background:var(--crimson); color:white; font-family:'Josefin Sans',sans-serif; font-size:.85rem; letter-spacing:.2em; text-transform:uppercase; padding:1rem 3rem; border:none; cursor:pointer; transition:all .3s; font-weight:600; display:block; width:100%; }
+.btn-submit { background:var(--crimson); color:white; font-family:'Josefin Sans',sans-serif; font-size:.85rem; letter-spacing:.2em; text-transform:uppercase; padding:1rem 3rem; border:none; cursor:pointer; transition:background-color .3s, transform .3s, box-shadow .3s; font-weight:600; display:block; width:100%; }
 .btn-submit:hover { background:var(--burnt-orange); transform:translateY(-3px); box-shadow:0 10px 30px rgba(176,16,48,.5); }
 .form-success { display:none; text-align:center; padding:2rem; color:white; }
 .form-success h3 { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--kantha-yellow); margin-bottom:.5rem; }
@@ -491,7 +489,6 @@ footer { background:#100400; padding:3rem 2rem 1.5rem; }
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-eyebrow">✦ Handmade Kantha Wearable Art ✦</p>
     <h1 class="hero-title">Color.<br>Soul.<br><em>One of a Kind.</em></h1>
     <p class="hero-subtitle">Each piece is handcrafted from upcycled vintage kantha — vibrant, reversible, and made with intention. No two alike. Ever.</p>
     <div class="hero-buttons">
@@ -512,7 +509,6 @@ footer { background:#100400; padding:3rem 2rem 1.5rem; }
 <!-- LIVE SHOWS -->
 <section class="shows-section kantha-fabric-dark" id="shows">
   <div class="shows-container reveal">
-    <p class="section-label">✦ Join Us Live ✦</p>
     <h2 class="section-title section-title-light">Live <em>Kantha Shows</em></h2>
     <div class="live-badge"><span class="live-dot"></span>Streaming on Whatnot</div>
     <p style="color:rgba(255,255,255,.7);font-size:1.1rem;max-width:600px;margin:0 auto;">Join Maggie live twice a week for one-of-a-kind kantha drops — shop in real time, ask questions, and find your next favorite piece before it's gone.</p>
@@ -520,7 +516,7 @@ footer { background:#100400; padding:3rem 2rem 1.5rem; }
       <div class="show-card">
         <div class="show-day">Wednesday</div>
         <div class="show-time">6:30 PM PST · Every Week</div>
-        <p class="show-desc">New arrivals, exclusive drops, and handpicked kantha pieces you won't find twice. Don't miss out!</p>
+        <p class="show-desc">New arrivals, exclusive drops, and handpicked kantha pieces you won’t find twice. Don’t miss out!</p>
         <a href="https://whatnot.com/s/gisSG3Fk" target="_blank" class="btn-whatnot">Watch on Whatnot</a>
       </div>
       <div class="show-card">
@@ -542,7 +538,6 @@ footer { background:#100400; padding:3rem 2rem 1.5rem; }
 <!-- VIDEO -->
 <section class="video-section kantha-fabric-light" id="watch">
   <div class="video-container reveal">
-    <p class="section-label">✦ Behind the Craft ✦</p>
     <h2 class="section-title">Watch <em>Maggie Make</em></h2>
     <p style="font-size:1.1rem;color:rgba(26,10,0,.7);max-width:580px;margin:.5rem auto 0;">A little chaos, a lot of color, and all the love — handmaking reversible kantha bucket hats, one stitch at a time.</p>
     <div class="video-wrapper">
@@ -561,7 +556,6 @@ footer { background:#100400; padding:3rem 2rem 1.5rem; }
   <div class="shop-container">
     <div class="shop-header reveal">
       <div>
-        <p class="section-label">✦ Etsy Shop ✦</p>
         <h2 class="section-title">The <em>Collection</em></h2>
       </div>
       <a href="https://www.etsy.com/shop/LunaStyles2026Shop" target="_blank" class="btn btn-orange">View Full Shop</a>
@@ -580,9 +574,8 @@ footer { background:#100400; padding:3rem 2rem 1.5rem; }
 <section class="instagram-section kantha-fabric-light" id="instagram">
   <div class="insta-container">
     <div class="insta-intro reveal">
-      <p class="section-label">✦ Follow Along ✦</p>
       <h2 class="section-title">From the <em>Feed</em></h2>
-      <p style="color:rgba(26,10,0,.65);font-size:1.05rem;max-width:520px;margin:.5rem auto 0;">Real pieces, real vibes — see what Maggie's been making and wearing lately.</p>
+      <p style="color:rgba(26,10,0,.65);font-size:1.05rem;max-width:520px;margin:.5rem auto 0;">Real pieces, real vibes — see what Maggie’s been making and wearing lately.</p>
     </div>
     <div class="insta-embed-grid reveal">
       <div class="insta-embed-wrap"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DYk7c_kSdFs/" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;padding:0;width:100%;"></blockquote></div>
@@ -603,7 +596,6 @@ footer { background:#100400; padding:3rem 2rem 1.5rem; }
 <section class="reviews-section" id="reviews">
   <div class="reviews-container">
     <div class="reviews-header reveal">
-      <p class="section-label">✦ Customer Love ✦</p>
       <h2 class="section-title">What People <em>Are Saying</em></h2>
       <div class="review-stars">★★★★★</div>
       <p style="font-size:1rem;color:rgba(26,10,0,.6);max-width:480px;margin:.5rem auto 0;">5.0 across Etsy &amp; Whatnot — because every piece is made with real care.</p>
@@ -653,11 +645,10 @@ footer { background:#100400; padding:3rem 2rem 1.5rem; }
       <div class="about-badge"><strong>Magaly Flores</strong><span>Owner & Founder</span></div>
     </div>
     <div class="about-text reveal">
-      <p class="section-label">✦ The Story ✦</p>
-      <h2 class="section-title">Hi, I'm <em>Maggie</em></h2>
+      <h2 class="section-title">Hi, I’m <em>Maggie</em></h2>
       <p>Welcome to <strong>Luna Styles</strong> — a small shop built on big color, sustainable fashion, and the belief that what you wear should feel like <em>you</em>.</p>
       <p>I curate one-of-a-kind <strong>kantha pieces</strong> full of texture and soul — reversible tops, bucket hats, kimonos, totes, and more. I also handcraft select items myself, sewn with love and individuality in mind.</p>
-      <p>Every piece is unique. Every purchase supports a small, <strong>woman-owned, handmade business</strong>. Expect cozy boho vibes, sustainable fashion, vibrant prints, and pieces you won't find twice.</p>
+      <p>Every piece is unique. Every purchase supports a small, <strong>woman-owned, handmade business</strong>. Expect cozy boho vibes, sustainable fashion, vibrant prints, and pieces you won’t find twice.</p>
       <div class="about-stats">
         <div class="stat-item"><span class="stat-number">5.0 ⭐</span><span class="stat-label">Rating</span></div>
         <div class="stat-item"><span class="stat-number">&lt;1d</span><span class="stat-label">Avg Ship</span></div>
@@ -680,19 +671,18 @@ footer { background:#100400; padding:3rem 2rem 1.5rem; }
 <!-- CONTACT -->
 <section class="contact-section kantha-fabric-dark" id="contact">
   <div class="contact-container">
-    <p class="section-label" style="text-align:center;">✦ Get In Touch ✦</p>
     <h2 class="section-title section-title-light" style="text-align:center;">Say <em>Hello</em></h2>
     <p style="color:rgba(255,255,255,.65);font-size:1.05rem;text-align:center;margin:.5rem 0 0;">The fastest way to reach Maggie is directly on Instagram or Etsy:</p>
 
     <!-- Direct links to DM/message -->
     <div class="contact-options reveal">
       <a href="https://www.instagram.com/lunastyles2026" target="_blank" class="contact-option">
-        <span class="contact-option-icon">📸</span>
+        <svg class="contact-option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         <div class="contact-option-title">Instagram DM</div>
         <div class="contact-option-desc">@lunastyles2026 · Usually replies within hours</div>
       </a>
       <a href="https://www.etsy.com/shop/LunaStyles2026Shop#contact" target="_blank" class="contact-option">
-        <span class="contact-option-icon">🛍️</span>
+        <svg class="contact-option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 4 6v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6l-2-4Z"/><path d="M4 6h16"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         <div class="contact-option-title">Etsy Message</div>
         <div class="contact-option-desc">LunaStyles2026Shop · &lt;1 day avg response</div>
       </a>
@@ -719,10 +709,10 @@ footer { background:#100400; padding:3rem 2rem 1.5rem; }
         </select>
       </div>
       <div class="form-group"><label for="message">Message</label><textarea id="message" placeholder="Tell Maggie what's on your mind..." required></textarea></div>
-      <button type="submit" class="btn-submit">Send Message ✦</button>
+      <button type="submit" class="btn-submit">Send Message</button>
     </form>
     <div class="form-success" id="formSuccess">
-      <h3>Message Sent! ✦</h3>
+      <h3>Message Sent!</h3>
       <p style="color:rgba(255,255,255,.65);">Thanks for reaching out! Maggie will get back to you soon. For the fastest reply, DM on <a href="https://www.instagram.com/lunastyles2026" style="color:var(--kantha-yellow);">Instagram</a> or message on <a href="https://www.etsy.com/shop/LunaStyles2026Shop#contact" style="color:var(--kantha-yellow);">Etsy</a>.</p>
     </div>
   </div>
