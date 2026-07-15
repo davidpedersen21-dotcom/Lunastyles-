@@ -253,6 +253,13 @@
       "price": "$45.00"
     },
     {
+      "url": "https://www.etsy.com/listing/4499978150/reversible-kantha-top-one-size-fits-most",
+      "img": "https://i.etsystatic.com/7987473738/r/il/f51322/7987473738/il_340x270.7987473738_fz1c.jpg",
+      "name": "Reversible Kantha Top",
+      "tag": "Tops",
+      "price": ""
+    },
+    {
       "url": "https://www.etsy.com/listing/4512514294/plus-size-reversible-mini-wrap-skirt",
       "img": "https://i.etsystatic.com/8117802653/r/il/652f62/8117802653/il_340x270.8117802653_s77e.jpg",
       "name": "Plus size Reversible Mini Wrap Skirt",
@@ -330,13 +337,6 @@
       "price": "$50.00"
     },
     {
-      "url": "https://www.etsy.com/listing/4501084026/reversible-kantha-top-one-size-fits-most",
-      "img": "https://i.etsystatic.com/65615339/r/il/399d2a/8042525057/il_340x270.8042525057_2hyp.jpg",
-      "name": "Reversible Kantha Top",
-      "tag": "Tops",
-      "price": "$50.00"
-    },
-    {
       "url": "https://www.etsy.com/listing/4500084791/reversible-kantha-bucket-hat-handmade",
       "img": "https://i.etsystatic.com/65615339/r/il/371df2/7988191482/il_340x270.7988191482_hwoc.jpg",
       "name": "Reversible Kantha Bucket Hat- Handmade- One of a kind- Upcyc",
@@ -361,6 +361,18 @@
   "reviews": [
     {
       "rating": 5,
+      "text": "Fantastic communication! Super quick shipping. Love this top….so I ordered another! So cute over a tank dress.",
+      "author": "Ann",
+      "date": "Jul 14, 2026"
+    },
+    {
+      "rating": 5,
+      "text": "Fantastic communication! Super quick shipping. Love this top….so I ordered another! So cute over a tank dress.",
+      "author": "Ann",
+      "date": "Jul 14, 2026"
+    },
+    {
+      "rating": 5,
       "text": "At 5’2\", this reached about knee length, covering my thighs more fully than in the photo. I love this.",
       "author": "Erica",
       "date": "Jun 17, 2026"
@@ -394,19 +406,7 @@
       "text": "Reversible Midi Wrap Skirt - Upcycled Sari Fabric – Boho Festival Skirt – Two Looks in One",
       "author": "Joselle",
       "date": "Jun 15, 2026"
-    },
-    {
-      "rating": 5,
-      "text": "This skirt is a gift and I know it will be loved! It's beautiful and sewn together well with lovely silk.",
-      "author": "Liana",
-      "date": "Jun 5, 2026"
-    },
-    {
-      "rating": 5,
-      "text": "This skirt is a gift and I know it will be loved! It's beautiful and sewn together well with lovely silk.",
-      "author": "Liana",
-      "date": "Jun 5, 2026"
     }
   ],
-  "updatedAt": "2026-07-14T13:23:32.896Z"
+  "updatedAt": "2026-07-15T02:47:24.569Z"
 }
