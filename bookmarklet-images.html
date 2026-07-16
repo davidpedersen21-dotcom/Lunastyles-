@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luna Styles — Image Export Bookmarklet</title>
+  <style>
+    body { font-family: sans-serif; max-width: 680px; margin: 60px auto; padding: 0 24px; color: #222; }
+    h1 { font-size: 1.5rem; }
+    .card { background: #f7f3ec; border-radius: 10px; padding: 24px; margin: 24px 0; }
+    .bm-link {
+      display: inline-block; padding: 14px 28px;
+      background: #1A7A6A; color: #fff; border-radius: 8px;
+      font-size: 1.1rem; font-weight: bold; text-decoration: none;
+      cursor: grab; border: 3px dashed rgba(255,255,255,.4);
+    }
+    .bm-link:hover { background: #12564a; }
+    ol li { margin-bottom: 10px; line-height: 1.6; }
+    code { background: #e8e0d0; padding: 2px 6px; border-radius: 4px; font-size: .9em; }
+    .note { font-size: .85rem; color: #666; margin-top: 12px; }
+    .warn { font-size: .85rem; color: #8B4513; background: #fff3cd; padding: 10px 14px; border-radius: 6px; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <h1>🖼️ Luna Styles — Image Export Bookmarklet</h1>
+  <p>One click on your Etsy shop page → downloads every listing's photos as a single zip file, organized into one folder per listing (named after the item title).</p>
+
+  <div class="card">
+    <p><strong>Step 1 — Drag this to your bookmarks bar:</strong></p>
+    <a class="bm-link" id="bm">🖼️ Export Images</a>
+    <p class="note">Make sure your bookmarks bar is visible first (Ctrl+Shift+B in Chrome/Edge).</p>
+  </div>
+
+  <div class="card">
+    <p><strong>Step 2 — Use it:</strong></p>
+    <ol>
+      <li>Open your Etsy shop: <code>etsy.com/shop/LunaStyles2026Shop</code></li>
+      <li>Click <strong>Export Images</strong> in your bookmarks bar</li>
+      <li>Your browser may ask permission to download multiple files — click <strong>Allow</strong></li>
+      <li>Watch the status toast in the top-right corner — it walks through each listing</li>
+      <li>When done, a single <code>luna-styles-listing-images.zip</code> file downloads</li>
+      <li>Unzip it — each listing gets its own folder named after the item title, containing that listing's photos</li>
+    </ol>
+    <p class="note">This visits every listing page one at a time, so it can take a few minutes for a shop with dozens of listings. Don't close the tab while it's running.</p>
+  </div>
+
+  <div class="warn">
+    <strong>Heads up — this one is experimental.</strong> Etsy's page structure and image server aren't things I can test against directly, so a few things might not work exactly as described the first time you try it:
+    <ul style="margin:8px 0 0 20px; padding:0;">
+      <li>If a listing's photos don't come through, Etsy's image server may be blocking the download — the toast will tell you how many images failed, and the zip will still contain everything that succeeded.</li>
+      <li>If nothing downloads at all, or the zip is empty, let me know exactly what the toast said and I'll adjust it.</li>
+    </ul>
+  </div>
+
+  <script>
+    const code = `(async function(){
+if(!location.hostname.includes('etsy.com')){return alert('Run this on your Etsy shop page:\\netsy.com/shop/LunaStyles2026Shop');}
+const SHOP='https://www.etsy.com/shop/LunaStyles2026Shop';
+const toast=Object.assign(document.createElement('div'),{style:'position:fixed;top:16px;right:16px;padding:14px 22px;background:#222;color:#fff;border-radius:8px;z-index:2147483647;font:14px/1.5 sans-serif;max-width:360px;box-shadow:0 4px 20px rgba(0,0,0,.5);'});
+document.body.appendChild(toast);
+const log=m=>{toast.textContent=m;};
+const fail=m=>{toast.style.background='#c0392b';toast.textContent='✗ '+m;setTimeout(()=>toast.remove(),12000);};
+const ok=m=>{toast.style.background='#27ae60';toast.textContent='✓ '+m;setTimeout(()=>toast.remove(),15000);};
+
+const crcTable=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?(0xEDB88320^(c>>>1)):(c>>>1);t[n]=c;}return t;})();
+function crc32(bytes){let c=0xFFFFFFFF;for(let i=0;i<bytes.length;i++)c=crcTable[(c^bytes[i])&0xFF]^(c>>>8);return (c^0xFFFFFFFF)>>>0;}
+function makeZip(files){
+  const chunks=[];const central=[];let offset=0;const enc=new TextEncoder();
+  for(const f of files){
+    const nameBytes=enc.encode(f.name);const data=f.data;const crc=crc32(data);
+    const localHeader=new Uint8Array(30+nameBytes.length);const dv=new DataView(localHeader.buffer);
+    dv.setUint32(0,0x04034b50,true);dv.setUint16(4,20,true);dv.setUint16(6,0,true);dv.setUint16(8,0,true);
+    dv.setUint16(10,0x21,true);dv.setUint16(12,0x0,true);dv.setUint32(14,crc,true);
+    dv.setUint32(18,data.length,true);dv.setUint32(22,data.length,true);
+    dv.setUint16(26,nameBytes.length,true);dv.setUint16(28,0,true);
+    localHeader.set(nameBytes,30);chunks.push(localHeader,data);
+    central.push({nameBytes,crc,size:data.length,offset});offset+=localHeader.length+data.length;
+  }
+  const centralStart=offset;
+  for(const c of central){
+    const rec=new Uint8Array(46+c.nameBytes.length);const dv=new DataView(rec.buffer);
+    dv.setUint32(0,0x02014b50,true);dv.setUint16(4,20,true);dv.setUint16(6,20,true);dv.setUint16(8,0,true);
+    dv.setUint16(10,0,true);dv.setUint16(12,0x21,true);dv.setUint16(14,0x0,true);dv.setUint32(16,c.crc,true);
+    dv.setUint32(20,c.size,true);dv.setUint32(24,c.size,true);dv.setUint16(28,c.nameBytes.length,true);
+    dv.setUint16(30,0,true);dv.setUint16(32,0,true);dv.setUint16(34,0,true);dv.setUint16(36,0,true);
+    dv.setUint32(38,0,true);dv.setUint32(42,c.offset,true);rec.set(c.nameBytes,46);
+    chunks.push(rec);offset+=rec.length;
+  }
+  const centralSize=offset-centralStart;
+  const end=new Uint8Array(22);const dv=new DataView(end.buffer);
+  dv.setUint32(0,0x06054b50,true);dv.setUint16(4,0,true);dv.setUint16(6,0,true);
+  dv.setUint16(8,central.length,true);dv.setUint16(10,central.length,true);
+  dv.setUint32(12,centralSize,true);dv.setUint32(16,centralStart,true);dv.setUint16(20,0,true);
+  chunks.push(end);
+  return new Blob(chunks,{type:'application/zip'});
+}
+
+function sanitize(name){
+  return (name||'').replace(/[\\\\/:*?"<>|]/g,'-').replace(/\\s+/g,' ').trim().substring(0,80)||'Untitled';
+}
+function upsize(url){
+  return url.replace(/il_\\d+x[nN\\d]+\\./i,'il_fullxfull.').split('?')[0];
+}
+async function fetchDoc(url){
+  const res=await fetch(url,{credentials:'same-origin'});
+  return new DOMParser().parseFromString(await res.text(),'text/html');
+}
+function scrapeListings(doc){
+  const seen=new Set(),r=[];
+  doc.querySelectorAll('a[href*="/listing/"]').forEach(a=>{
+    const url=a.href.split('?')[0];
+    if(seen.has(url)||!url.includes('/listing/'))return;
+    seen.add(url);r.push(url);
+  });
+  return r;
+}
+function titleOf(doc){
+  const h1=doc.querySelector('h1[data-buy-box-listing-title],h1');
+  return (h1?.textContent||doc.title||'listing').trim();
+}
+function extractImages(doc){
+  const urls=new Set();
+  doc.querySelectorAll('script[type="application/ld+json"]').forEach(s=>{
+    try{
+      const data=JSON.parse(s.textContent);
+      const items=Array.isArray(data)?data:[data];
+      items.forEach(it=>{
+        let imgs=it.image;
+        if(!imgs)return;
+        if(!Array.isArray(imgs))imgs=[imgs];
+        imgs.forEach(i=>{
+          if(typeof i==='string')urls.add(upsize(i));
+          else if(i&&i.url)urls.add(upsize(i.url));
+        });
+      });
+    }catch{}
+  });
+  doc.querySelectorAll('img[src*="etsystatic.com"],img[data-src*="etsystatic.com"]').forEach(img=>{
+    const src=img.getAttribute('src')||img.getAttribute('data-src');
+    if(src&&/il_\\d+x[nN\\d]+\\./i.test(src))urls.add(upsize(src));
+  });
+  return [...urls];
+}
+function extOf(url){
+  const m=url.match(/\\.(jpe?g|png|gif|webp)(?:$|\\?)/i);
+  return m?m[1].toLowerCase().replace('jpeg','jpg'):'jpg';
+}
+function delay(ms){return new Promise(r=>setTimeout(r,ms));}
+
+log('🔄 Finding listings...');
+let listings=scrapeListings(document);
+for(let p=2;p<=10;p++){
+  try{
+    const doc=await fetchDoc(SHOP+'?page='+p);
+    const fresh=scrapeListings(doc).filter(u=>!listings.includes(u));
+    if(!fresh.length)break;
+    listings.push(...fresh);
+  }catch{break;}
+}
+if(!listings.length)return fail('No listings found. Make sure you are on your Etsy shop page.');
+
+const files=[];
+const usedNames=new Set();
+let corsBlocked=0;
+let listingsDone=0;
+for(const url of listings){
+  listingsDone++;
+  log('🔄 ('+listingsDone+'/'+listings.length+') Reading listing...');
+  let doc;
+  try{ doc=await fetchDoc(url); }catch{ continue; }
+  let title=sanitize(titleOf(doc));
+  let uniqueTitle=title,n=2;
+  while(usedNames.has(uniqueTitle)){uniqueTitle=title+' ('+(n++)+')';}
+  usedNames.add(uniqueTitle);
+  const imageUrls=extractImages(doc);
+  let imgN=0;
+  for(const imgUrl of imageUrls){
+    imgN++;
+    log('🔄 ('+listingsDone+'/'+listings.length+') '+uniqueTitle+' — image '+imgN+'/'+imageUrls.length);
+    try{
+      const res=await fetch(imgUrl);
+      if(!res.ok)continue;
+      const buf=new Uint8Array(await res.arrayBuffer());
+      files.push({name:uniqueTitle+'/'+String(imgN).padStart(2,'0')+'.'+extOf(imgUrl),data:buf});
+    }catch{ corsBlocked++; }
+    await delay(120);
+  }
+  await delay(300);
+}
+
+if(!files.length){
+  return fail('Could not download any images (likely blocked by Etsy\\'s image server). See bookmarklet-images.html notes.');
+}
+
+log('🔄 Zipping '+files.length+' images from '+usedNames.size+' listings...');
+const zipBlob=makeZip(files);
+const a=document.createElement('a');
+a.href=URL.createObjectURL(zipBlob);
+a.download='luna-styles-listing-images.zip';
+document.body.appendChild(a);
+a.click();
+a.remove();
+const note=corsBlocked?(' ('+corsBlocked+' images could not be downloaded)'):'';
+ok('Downloaded '+files.length+' images from '+usedNames.size+' listings as a zip'+note+'.');
+})()`;
+    document.getElementById('bm').href = 'javascript:' + encodeURIComponent(code);
+  </script>
+</body>
+</html>
